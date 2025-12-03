@@ -1,0 +1,8 @@
+﻿/* 03mr.css */
+.article__content { line-height: var(--line-height-relaxed); }
+.article__content > * + * { margin-top: var(--spacing-md); }
+.article__content h1, .article__content h2, .article__content h3 { margin-top: var(--spacing-xl); }
+.article__content img { margin: var(--spacing-lg) auto; display: block; }
+.article__content table { width: 100%; margin: var(--spacing-lg) 0; }
+.article__content ul, .article__content ol { margin-left: var(--spacing-lg); }
+.admonition { padding: var(--spacing-md); margin: var(--spacing-lg) 0; border-left: 4px solid var(--color-primary); background-color: var(--color-bg-secondary); }

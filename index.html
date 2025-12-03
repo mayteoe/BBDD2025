@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apuntes y actividades del módulo profesional de Base de Datos del CFGS de DAM/DAW">
+  <meta name="author" content="Mayte Olmedilla">
+  <title>Bases de Datos - IES Juan Bosco</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/index.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.png">
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/../css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+</head>
+
+<body class="page">
+  <!-- HEADER - Cabecera del sitio -->
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="index.html" class="header__logo">
+          <img src="images/bd.png" alt="Logo Bases de Datos" class="header__logo-img">
+          <span class="header__title">Bases de Datos</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV - Navegación principal -->
+  <nav class="nav">
+    <div class="container">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="index.html" class="nav__link nav__link--active">Inicio</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/01intro.html" class="nav__link">1. Sistemas de Almacenamiento</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/02er.html" class="nav__link">2. Modelo E/R</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/03mr.html" class="nav__link">3. Modelo Relacional</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/04mr-eer.html" class="nav__link">4. Transformación</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/05ddl.html" class="nav__link">5. DDL y DML</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/06sql.html" class="nav__link">6. Consultas SQL</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/07sql-group.html" class="nav__link">7. Agregaciones</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/08sql-subquerys.html" class="nav__link">8. Subconsultas</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/09dcl-tcl.html" class="nav__link">9. DCL y TCL</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/10plsql.html" class="nav__link">10. PL/SQL</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/11triggers.html" class="nav__link">11. Triggers</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/12nosql.html" class="nav__link">12. NoSQL</a>
+        </li>
+        <li class="nav__item">
+          <a href="./html/13mongodb.html" class="nav__link">13. MongoDB</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN - Contenido principal -->
+  <main class="main">
+    <div class="container">
+      <!-- ARTICLE - Artículo principal -->
+      <article class="article">
+        <!-- Encabezado del artículo -->
+        <header class="article__header">
+          <h1 class="article__title">Bases de Datos</h1>
+          <p class="article__meta">
+            <span class="article__meta-item">Módulo 0484 - CFGS DAM/DAW</span>
+            <span class="article__meta-item">IES Juan Bosco - Alcázar de San Juan</span>
+          </p>
+        </header>
+
+        <!-- Contenido del artículo -->
+        <div class="article__content">
+          <!-- Introducción -->
+          <section class="content-section">
+            <p>
+              En este repositorio vamos a agrupar los materiales y actividades realizadas en el módulo 0484 de
+              <strong><em>Bases de Datos</em></strong> del <abbr title="Ciclo Formativo de Grado Superior">CFGS</abbr>
+              de
+              <em>Desarrollo de Aplicaciones Multiplataforma</em> (<abbr
+                title="Desarrollo de aplicaciones multiplataforma">DAM</abbr>),
+              cuyo curriculum viene fijado por el <a
+                href="https://www.boe.es/boe/dias/2023/06/03/pdfs/BOE-A-2023-13221.pdf">Decreto 80/2024</a>,
+              impartido en el <a href="https://www.iesjuanbosco.es">IES Juan Bosco</a> de Alcázar de San Juan.
+            </p>
+
+            <p>La <ins>competencia</ins> que se trabaja en este curso es:</p>
+            <ul>
+              <li>
+                d) Gestionar bases de datos, interpretando su diseño lógico y verificando integridad,
+                consistencia, seguridad y accesibilidad de los datos.
+              </li>
+            </ul>
+
+            <p>Y el <ins>objetivo general</ins> correspondiente es:</p>
+            <ul>
+              <li>
+                e) Interpretar el diseño lógico, verificando los parámetros establecidos para gestionar bases de datos.
+              </li>
+            </ul>
+
+            <p>
+              Las líneas de actuación en el proceso de enseñanza-aprendizaje que permiten alcanzar los objetivos del
+              módulo versarán sobre:
+            </p>
+            <ul>
+              <li>La interpretación de diseños lógicos de bases de datos.</li>
+              <li>La realización del diseño físico de una base de datos a partir de un diseño lógico.</li>
+              <li>La implementación y normalización de bases de datos.</li>
+              <li>La realización de operaciones de consulta y modificación sobre los datos almacenados.</li>
+              <li>La programación de procedimientos almacenados.</li>
+              <li>La utilización de bases de datos no relacionales.</li>
+            </ul>
+          </section>
+
+          <!-- Resultados de Aprendizaje -->
+          <section class="content-section" id="resultados-de-aprendizaje">
+            <h2>Resultados de Aprendizaje</h2>
+            <p>
+              Los diferentes resultados de aprendizaje (<abbr title="Resultado de aprendizaje">RA</abbr>)
+              trabajados junto con su peso aproximado, tal cual se indica en la programación didáctica, son:
+            </p>
+
+            <table class="table">
+              <thead class="table__header">
+                <tr class="table__row">
+                  <th class="table__head-cell">Código</th>
+                  <th class="table__head-cell">Descripción</th>
+                  <th class="table__head-cell table__cell--center">Peso (%)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table__row">
+                  <td class="table__cell">
+                    <abbr
+                      title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RA1</abbr>
+                  </td>
+                  <td class="table__cell">
+                    Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los
+                    sistemas gestores.
+                  </td>
+                  <td class="table__cell table__cell--center">2</td>
+                </tr>
+                <tr class="table__row">
+                  <td class="table__cell">
+                    <abbr
+                      title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional.">RA2</abbr>
+                  </td>
+                  <td class="table__cell">
+                    Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo
+                    relacional.
+                  </td>
+                  <td class="table__cell table__cell--center">11</td>
+                </tr>
+                <tr class="table__row">
+                  <td class="table__cell">
+                    <abbr
+                      title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RA3</abbr>
+                  </td>
+                  <td class="table__cell">
+                    Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas
+                    y el lenguaje de manipulación de datos.
+                  </td>
+                  <td class="table__cell table__cell--center">25</td>
+                </tr>
+                <tr class="table__row">
+                  <td class="table__cell">
+                    <abbr
+                      title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RA4</abbr>
+                  </td>
+                  <td class="table__cell">
+                    Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas
+                    y el lenguaje de manipulación de datos.
+                  </td>
+                  <td class="table__cell table__cell--center">10</td>
+                </tr>
+                <tr class="table__row">
+                  <td class="table__cell">
+                    <abbr
+                      title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RA5</abbr>
+                  </td>
+                  <td class="table__cell">
+                    Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado
+                    en el sistema gestor de bases de datos.
+                  </td>
+                  <td class="table__cell table__cell--center">20</td>
+                </tr>
+                <tr class="table__row">
+                  <td class="table__cell">
+                    <abbr
+                      title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RA6</abbr>
+                  </td>
+                  <td class="table__cell">
+                    Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.
+                  </td>
+                  <td class="table__cell table__cell--center">24</td>
+                </tr>
+                <tr class="table__row">
+                  <td class="table__cell">
+                    <abbr
+                      title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RA7</abbr>
+                  </td>
+                  <td class="table__cell">
+                    Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las
+                    posibilidades que proporciona el sistema gestor.
+                  </td>
+                  <td class="table__cell table__cell--center">8</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- Unidades de Trabajo -->
+          <section class="content-section" id="unidades-de-trabajo">
+            <h2>Unidades de Trabajo</h2>
+            <p>
+              A partir de los <abbr title="Resultado de aprendizaje">RA</abbr>, hemos definido 13 unidades de trabajo
+              (<abbr title="Unidad de trabajo">UT</abbr>).
+            </p>
+
+            <p>
+              El módulo de <em>Base de Datos</em> viene fijado con una carga lectiva de <strong>163h</strong>,
+              repartidas en <strong>5 sesiones semanales</strong>, a lo largo de 32 semanas. Este curso se ha
+              planificado
+              sobre un total de 29 semanas y media, dejando las últimas semanas de mayo para el desarrollo, por parte
+              del
+              alumnado, del programa formativo dual en la empresa. Estas 29 semanas y media hacen un total de 151h
+              lectivas.
+            </p>
+
+            <p>
+              A continuación, en la siguiente tabla y a modo de mapa general, se muestran las diferentes
+              <abbr title="Unidad de trabajo">UT</abbr> y los <abbr title="Resultado de aprendizaje">RA</abbr> que
+              cubren,
+              indicando la carga horaria empleada durante el presente curso en cada una de ellas:
+            </p>
+
+            <div class="table-wrapper">
+              <table class="table table--responsive">
+                <thead class="table__header">
+                  <tr class="table__row">
+                    <th class="table__head-cell">Unidades de Trabajo</th>
+                    <th class="table__head-cell table__cell--center"><abbr
+                        title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RA1</abbr>
+                    </th>
+                    <th class="table__head-cell table__cell--center"><abbr
+                        title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional.">RA2</abbr>
+                    </th>
+                    <th class="table__head-cell table__cell--center"><abbr
+                        title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RA3</abbr>
+                    </th>
+                    <th class="table__head-cell table__cell--center"><abbr
+                        title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RA4</abbr>
+                    </th>
+                    <th class="table__head-cell table__cell--center"><abbr
+                        title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RA5</abbr>
+                    </th>
+                    <th class="table__head-cell table__cell--center"><abbr
+                        title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RA6</abbr>
+                    </th>
+                    <th class="table__head-cell table__cell--center"><abbr
+                        title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RA7</abbr>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="01intro-new.html">1. Almacenamiento de ficheros</a></td>
+                    <td class="table__cell table__cell--center">6</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="02er.html">2. Diseño conceptual. Modelo Entidad/Relación</a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">35</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="03mr.html">3. Diseño lógico: Modelo relacional</a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">9</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="04mr-eer.html">4. Diseño lógico: Transformación de modelos</a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">13</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="05ddl.html">5. Modelo físico - SQL - DDL y DML</a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">8</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">6</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="06sql.html">6. SQL: Selección de datos</a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">12</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="07sql-group.html">7. SQL: Agregaciones</a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">10</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="08sql-subquerys.html">8. SQL: Subconsultas. Optimización</a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">12</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="09dcl-tcl.html">9. SQL: DCL y TCL</a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">2</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">7</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="10plsql.html">10. Programación en bases de datos</a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">14</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="11triggers.html">11. PL/SQL Avanzado</a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">14</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="12nosql.html">12. Bases de datos NoSQL</a> / <a
+                        href="12redis.html"><em>Redis</em></a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">10</td>
+                  </tr>
+                  <tr class="table__row">
+                    <td class="table__cell"><a href="13mongodb.html">13. Bases de datos documentales.
+                        <em>MongoDB</em></a></td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">—</td>
+                    <td class="table__cell table__cell--center">10</td>
+                  </tr>
+                  <tr class="table__row table__row--total">
+                    <td class="table__cell"><strong>Total - 163h</strong><br><strong>Porcentaje</strong></td>
+                    <td class="table__cell table__cell--center"><strong>6<br>2%</strong></td>
+                    <td class="table__cell table__cell--center"><strong>10<br>11%</strong></td>
+                    <td class="table__cell table__cell--center"><strong>34<br>25%</strong></td>
+                    <td class="table__cell table__cell--center"><strong>12<br>10%</strong></td>
+                    <td class="table__cell table__cell--center"><strong>24<br>20%</strong></td>
+                    <td class="table__cell table__cell--center"><strong>57<br>24%</strong></td>
+                    <td class="table__cell table__cell--center"><strong>20<br>8%</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Evaluación -->
+          <section class="content-section" id="evaluacion">
+            <h2>Evaluación</h2>
+            <p>
+              La evaluación del módulo se realizará de forma continua a lo largo del curso, valorando tanto
+              los conocimientos teóricos como las habilidades prácticas adquiridas por el alumnado.
+            </p>
+          </section>
+
+          <!-- Materiales -->
+          <section class="content-section" id="materiales">
+            <h2>Materiales</h2>
+            <p>
+              Los materiales del curso están disponibles en este sitio web, organizados por unidades de trabajo.
+              Cada unidad incluye apuntes teóricos, ejemplos prácticos y actividades de evaluación.
+            </p>
+          </section>
+        </div>
+
+        <!-- Pie del artículo -->
+        <footer class="article__footer">
+          <nav class="article__nav">
+            <a href="01intro-new.html" class="button button--accent">
+              Siguiente: 1. Sistemas de Almacenamiento →
+            </a>
+          </nav>
+        </footer>
+      </article>
+
+      <!-- ASIDE - Tabla de contenidos -->
+      <aside class="aside">
+        <h3 class="aside__title">En esta página</h3>
+        <nav class="aside__nav">
+          <ul class="aside__list">
+            <li class="aside__item">
+              <a href="#resultados-de-aprendizaje" class="aside__link">Resultados de Aprendizaje</a>
+            </li>
+            <li class="aside__item">
+              <a href="#unidades-de-trabajo" class="aside__link">Unidades de Trabajo</a>
+            </li>
+            <li class="aside__item">
+              <a href="#evaluacion" class="aside__link">Evaluación</a>
+            </li>
+            <li class="aside__item">
+              <a href="#materiales" class="aside__link">Materiales</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </main>
+
+  <!-- FOOTER - Pie de página -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <p class="footer__text">
+          © 2024-2026 Mayte Olmedilla -
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" class="footer__link">Licencia CC
+            BY-NC-SA</a>
+        </p>
+        <p class="footer__text">
+          <a href="https://github.com/mayteoe/BBDD" class="footer__link">GitHub</a> |
+          <a href="https://www.iesjuanbosco.es" class="footer__link">IES Juan Bosco</a> |
+          <a href="mailto:molmedilla@iesjuanbosco.es" class="footer__link">molmedilla@iesjuanbosco.es</a>
+        </p>
+        <p class="footer__text footer__text--small">
+          Basado en el trabajo de Aitor Medrano
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

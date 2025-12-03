@@ -1,0 +1,59 @@
+/* ============================================
+   01INTRO-NEW.CSS - Estilos específicos
+   ============================================ */
+
+/* Secciones de contenido */
+.content-section {
+    margin-bottom: var(--spacing-2xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.content-section:last-child {
+    border-bottom: none;
+}
+
+/* Navegación del artículo */
+.article__nav {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 2px solid var(--color-border);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .article__nav {
+        flex-direction: column;
+    }
+
+    .article__nav .button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Listas en el contenido */
+.article__content ul,
+.article__content ol {
+    margin-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.article__content li {
+    margin-bottom: var(--spacing-sm);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Títulos en secciones */
+.content-section h3 {
+    color: var(--color-primary);
+    margin-top: var(--spacing-lg);
+}
+
+.content-section h4 {
+    color: var(--color-primary-dark);
+    margin-top: var(--spacing-md);
+}

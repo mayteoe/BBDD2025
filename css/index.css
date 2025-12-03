@@ -1,0 +1,66 @@
+/* ============================================
+   INDEX.CSS - Estilos específicos para index.html
+   ============================================ */
+
+/* Estilos específicos para la tabla de unidades de trabajo */
+.table--responsive {
+    font-size: var(--font-size-sm);
+}
+
+.table__row--total {
+    background-color: var(--color-bg-secondary);
+    font-weight: var(--font-weight-bold);
+}
+
+.table__row--total .table__cell {
+    border-top: 2px solid var(--color-primary);
+}
+
+/* Wrapper para tablas con scroll horizontal en móvil */
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Secciones de contenido */
+.content-section {
+    margin-bottom: var(--spacing-2xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.content-section:last-child {
+    border-bottom: none;
+}
+
+/* Navegación del artículo */
+.article__nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 2px solid var(--color-border);
+}
+
+/* Responsive: Ocultar aside en móvil */
+@media (max-width: 1023px) {
+    .aside {
+        display: none;
+    }
+
+    .main {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mejoras para tablas en móvil */
+@media (max-width: 768px) {
+    .table {
+        font-size: var(--font-size-xs);
+    }
+
+    .table__head-cell,
+    .table__cell {
+        padding: var(--spacing-sm);
+    }
+}

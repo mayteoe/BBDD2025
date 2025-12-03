@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Diseño conceptual de bases de datos. Modelo Entidad/Relación y Modelo Entidad/Relación Extendido (EER).">
+  <title>2. Modelo Entidad/Relación - Bases de Datos</title>
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/02er.css">
+
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+</head>
+
+<body class="page">
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="../index.html" class="header__logo">
+          <img src="../images/bd.png" alt="Logo Bases de Datos" class="header__logo-img">
+          <span class="header__title">Bases de Datos</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="container">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="../index.html" class="nav__link">Inicio</a></li>
+        <li class="nav__item"><a href="01intro-new.html" class="nav__link">1. Sistemas de Almacenamiento</a></li>
+        <li class="nav__item"><a href="02er.html" class="nav__link nav__link--active">2. Modelo E/R</a></li>
+        <li class="nav__item"><a href="03mr.html" class="nav__link">3. Modelo Relacional</a></li>
+        <li class="nav__item"><a href="04mr-eer.html" class="nav__link">4. Transformación</a></li>
+        <li class="nav__item"><a href="05ddl.html" class="nav__link">5. DDL y DML</a></li>
+        <li class="nav__item"><a href="06sql.html" class="nav__link">6. Consultas SQL</a></li>
+        <li class="nav__item"><a href="07sql-group.html" class="nav__link">7. Agregaciones</a></li>
+        <li class="nav__item"><a href="08sql-subquerys.html" class="nav__link">8. Subconsultas</a></li>
+        <li class="nav__item"><a href="09dcl-tcl.html" class="nav__link">9. DCL y TCL</a></li>
+        <li class="nav__item"><a href="10plsql.html" class="nav__link">10. PL/SQL</a></li>
+        <li class="nav__item"><a href="11triggers.html" class="nav__link">11. Triggers</a></li>
+        <li class="nav__item"><a href="12nosql.html" class="nav__link">12. NoSQL</a></li>
+        <li class="nav__item"><a href="13mongodb.html" class="nav__link">13. MongoDB</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="container">
+      <article class="article">
+        <header class="article__header">
+          <h1 class="article__title">2. Diseño Conceptual: Modelo Entidad/Relación</h1>
+          <p class="article__meta">
+            <span class="article__meta-item">Unidad 2 - Modelo E/R y EER Extendido</span>
+          </p>
+        </header>
+
+        <div class="article__content">
+          <section class="content-section">
+            <h2>Introducción</h2>
+            <p>
+              El <strong>Modelo Entidad/Relación (E/R)</strong> es una herramienta para el diseño conceptual de bases de
+              datos.
+              Permite representar de forma gráfica la estructura lógica de una base de datos.
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>Elementos del Modelo E/R</h2>
+
+            <h3>Entidades</h3>
+            <p>
+              Una <strong>entidad</strong> es un objeto del mundo real que se puede distinguir de otros objetos y del
+              cual queremos almacenar información.
+            </p>
+
+            <h3>Atributos</h3>
+            <p>
+              Los <strong>atributos</strong> son las propiedades que describen a una entidad.
+            </p>
+            <ul>
+              <li><strong>Simples</strong>: No se pueden dividir</li>
+              <li><strong>Compuestos</strong>: Se pueden dividir en subatributos</li>
+              <li><strong>Monovaluados</strong>: Un solo valor</li>
+              <li><strong>Multivaluados</strong>: Varios valores</li>
+              <li><strong>Derivados</strong>: Se calculan a partir de otros</li>
+            </ul>
+
+            <h3>Relaciones</h3>
+            <p>
+              Las <strong>relaciones</strong> representan asociaciones entre entidades.
+            </p>
+
+            <h4>Cardinalidad</h4>
+            <ul>
+              <li><strong>1:1</strong> (Uno a Uno)</li>
+              <li><strong>1:N</strong> (Uno a Muchos)</li>
+              <li><strong>N:M</strong> (Muchos a Muchos)</li>
+            </ul>
+
+            <h4>Participación</h4>
+            <ul>
+              <li><strong>Total</strong>: Todas las instancias participan</li>
+              <li><strong>Parcial</strong>: Algunas instancias pueden no participar</li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>Modelo E/R Extendido (EER)</h2>
+            <p>
+              El modelo EER añade conceptos adicionales al modelo E/R básico:
+            </p>
+
+            <h3>Especialización y Generalización</h3>
+            <ul>
+              <li><strong>Especialización</strong>: Proceso top-down de definir subgrupos</li>
+              <li><strong>Generalización</strong>: Proceso bottom-up de agrupar entidades</li>
+            </ul>
+
+            <h3>Herencia</h3>
+            <p>
+              Las entidades especializadas heredan los atributos de la entidad general.
+            </p>
+
+            <h3>Restricciones</h3>
+            <ul>
+              <li><strong>Disjunción</strong>: Una instancia pertenece a una sola subclase</li>
+              <li><strong>Solapamiento</strong>: Una instancia puede pertenecer a varias subclases</li>
+              <li><strong>Completitud total</strong>: Toda instancia debe pertenecer a alguna subclase</li>
+              <li><strong>Completitud parcial</strong>: Puede haber instancias que no pertenezcan a ninguna subclase
+              </li>
+            </ul>
+          </section>
+
+          <section class="content-section">
+            <h2>Entidades Débiles</h2>
+            <p>
+              Una <strong>entidad débil</strong> es aquella que no puede existir sin otra entidad (entidad fuerte).
+            </p>
+          </section>
+
+          <section class="content-section">
+            <h2>Actividades</h2>
+            <p>
+              Consulta las actividades propuestas en el material complementario de esta unidad.
+            </p>
+          </section>
+        </div>
+
+        <footer class="article__footer">
+          <nav class="article__nav">
+            <a href="01intro-new.html" class="button">← Anterior: 1. Sistemas de Almacenamiento</a>
+            <a href="03mr.html" class="button button--accent">Siguiente: 3. Modelo Relacional →</a>
+          </nav>
+        </footer>
+      </article>
+
+      <aside class="aside">
+        <h3 class="aside__title">En esta página</h3>
+        <nav class="aside__nav">
+          <ul class="aside__list">
+            <li class="aside__item"><a href="#introduccion" class="aside__link">Introducción</a></li>
+            <li class="aside__item"><a href="#elementos" class="aside__link">Elementos del Modelo E/R</a></li>
+            <li class="aside__item"><a href="#eer" class="aside__link">Modelo EER</a></li>
+            <li class="aside__item"><a href="#actividades" class="aside__link">Actividades</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <p class="footer__text">
+          © 2024-2026 Mayte Olmedilla -
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" class="footer__link">Licencia CC
+            BY-NC-SA</a>
+        </p>
+        <p class="footer__text">
+          <a href="https://github.com/mayteoe/BBDD" class="footer__link">GitHub</a> |
+          <a href="https://www.iesjuanbosco.es" class="footer__link">IES Juan Bosco</a> |
+          <a href="mailto:molmedilla@iesjuanbosco.es" class="footer__link">molmedilla@iesjuanbosco.es</a>
+        </p>
+        <p class="footer__text footer__text--small">
+          Basado en el trabajo de Aitor Medrano
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
