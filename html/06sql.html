@@ -161,7 +161,8 @@ Añadir preguntas de join
                 <td><a href="06sql.html#AC601">AC601</a></td>
                 <td><abbr
                     title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>,
-                  <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr></td>
+                  <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr>
+                </td>
               </tr>
               <tr>
                 <td>3</td>
@@ -609,7 +610,8 @@ Cláusula LIMIT.
                 <hr />
                 <p><code>PRODUCTO ∩ PRODUCTO_LUJO</code> </p>
                 <p>Muestra los productos que están tanto en <strong>PRODUCTO</strong> como en
-                  <strong>PRODUCTO_LUJO</strong> </p>
+                  <strong>PRODUCTO_LUJO</strong>
+                </p>
                 <table>
                   <thead>
                     <tr>
@@ -644,7 +646,8 @@ Cláusula LIMIT.
                 <hr />
                 <p><code>PRODUCTO − PRODUCTO_LUJO</code></p>
                 <p>Devuelve los productos que están en <strong>PRODUCTO</strong> pero no en
-                  <strong>PRODUCTO_LUJO</strong>.</p>
+                  <strong>PRODUCTO_LUJO</strong>.
+                </p>
                 <table>
                   <thead>
                     <tr>
@@ -877,7 +880,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
             </li>
             <li>
               <p>Nombre de los productos de la categoría <code>Electrodomésticos</code> (primero la selección y luego el
-                <em>join</em>)</p>
+                <em>join</em>)
+              </p>
               <p>
                 <code>π<sub>nombre</sub>(PRODUCTO ⨝<sub>PRODUCTO.categoria_id = CATEGORIA.id</sub> (𝜎<sub>nombre = "Electrodomésticos</sub>(CATEGORIA))</code>
               </p>
@@ -897,7 +901,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
               <figcaption>Modelo físico de la BD Empresa</figcaption>
             </figure>
             </p>
-            <p>A partir del <a href="resources/06bd-empresa.sql"><em>script</em> DDL</a> puedes importar los datos
+            <p>A partir del <a href="../resources/06bd-empresa.sql"><em>script</em> DDL</a> puedes importar los datos
               mediante:</p>
             <div class="highlight">
               <pre><span></span><code><span class="linenos" data-linenos="1 "></span>mariadb<span class="w"> </span>-u<span class="w"> </span>s8a<span class="w"> </span>-p<span class="w"> </span>&lt;<span class="w"> </span>06bd-empresa.sql<span class="p">;</span>
@@ -909,7 +913,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 </code></pre>
             </div>
             <p>Recuerda que, si quieres saber la estructura de una tabla, podemos utilizar la sentencia
-              <code>DESCRIBE</code>/ <code>DESC</code>:</p>
+              <code>DESCRIBE</code>/ <code>DESC</code>:
+            </p>
             <div class="highlight">
               <pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +----------+---------------+------+-----+---------+----------------+</span>
@@ -1040,7 +1045,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 </code></pre>
           </div>
           <p>Si nos interesa recuperar datos que no contengan repetidos, podemos emplear
-            <strong><code>distinct</code></strong>:</p>
+            <strong><code>distinct</code></strong>:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+</span>
@@ -1174,10 +1180,12 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
               title="Permanent link">&para;</a></h4>
           <p>Se emplean para realizar cálculos sobre el total de elementos de la consulta (o agrupación). Tras el
             <code>SELECT</code> indicaremos la función (o funciones) a realizar sobre el total de elementos devueltos
-            por la consulta.</p>
+            por la consulta.
+          </p>
           <p>Vamos a comenzar contando la cantidad de filas mediante la función <a
               href="https://mariadb.com/kb/en/count/"><code>COUNT(expr)</code></a> pasándole como expresión
-            <code>*</code>, lo cual indica que utilice todas las columnas, independientemente de su valor:</p>
+            <code>*</code>, lo cual indica que utilice todas las columnas, independientemente de su valor:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Cantidad de empleados</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
@@ -1199,7 +1207,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 </code></pre>
           </div>
           <p>Si queremos recuperar cuantos elementos diferentes tenemos de un campo, en la expresión usaremos
-            <code>DISTINCT</code>:</p>
+            <code>DISTINCT</code>:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Cantidad de empleados que tienen habilidades</span>
 <span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">codemp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="p">;</span>
@@ -1262,7 +1271,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
           <p>En la próxima unidad estudiaremos como podemos <a href="07sql-group.html#agregaciones">agregar datos</a>
             por algunas columnas y realizar cálculos sobre ellas, lo que nos permitirá obtener información del tipo
             <em>"Cantidad de empleados de cada departamento"</em>, <em>"Salario medio por centro de los empleados"</em>,
-            etc...</p>
+            etc...
+          </p>
           <h4 id="cadenas">Cadenas<a class="headerlink" href="06sql.html#cadenas" title="Permanent link">&para;</a></h4>
           <p>Mediante <a href="https://mariadb.com/kb/en/string-functions/">funciones de cadenas de texto</a> podemos
             realizar múltiples operaciones:</p>
@@ -1332,7 +1342,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
             <li><a href="https://mariadb.com/kb/en/now/"><code>NOW()</code> / <code>CURRENT_TIMESTAMP</code></a>: fecha
               y hora actual del sistema.</li>
             <li><a href="https://mariadb.com/kb/en/curdate/"><code>CURDATE()</code></a>: fecha actual en formato
-              <code>yyyy-mm-dd</code> o <code>yyyymmdd</code>.</li>
+              <code>yyyy-mm-dd</code> o <code>yyyymmdd</code>.
+            </li>
             <li><a href="https://mariadb.com/kb/en/datediff/"><code>DATEDIFF(fecha1, fecha2)</code></a>: diferencia de
               días entre dos fechas.</li>
             <li><a
@@ -1379,7 +1390,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
             <li><a href="https://mariadb.com/kb/en/month/"><code>MONTH(fecha)</code></a>: mes en formato <code>mm</code>
             </li>
             <li>Otras funciones útiles son <code>SECOND</code>, <code>MINUTE</code>, <code>HOUR</code>,
-              <code>DAY</code>, <code>WEEK</code>, <code>DAYOFWEEK</code> …</li>
+              <code>DAY</code>, <code>WEEK</code>, <code>DAYOFWEEK</code> …
+            </li>
           </ul>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="k">YEAR</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span><span class="w"> </span><span class="k">MONTH</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span><span class="w"> </span><span class="n">DAYOFWEEK</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span>
@@ -1469,7 +1481,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
           <p>Cuando trabajamos con nulos también podemos emplear las funciones:</p>
           <ul>
             <li><a href="https://mariadb.com/kb/en/ifnull/"><code>IFNULL(campo, valor)</code></a>: devuelve
-              <code>valor</code> si <code>campo</code> es nulo</li>
+              <code>valor</code> si <code>campo</code> es nulo
+            </li>
             <li><a href="https://mariadb.com/kb/en/coalesce/"><code>COALESCE(campo1, campo2, ...)</code></a>: devuelve
               el primer valor no nulo de la lista de parámetros.</li>
           </ul>
@@ -1484,17 +1497,20 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
           <p>También tenemos funciones <a href="https://mariadb.com/kb/en/numeric-functions/">matemáticas</a> como:</p>
           <ul>
             <li><a href="https://mariadb.com/kb/en/abs/"><code>ABS(num)</code></a>: obtiene el valor absoluto de
-              <code>num</code></li>
+              <code>num</code>
+            </li>
             <li><a href="https://mariadb.com/kb/en/sqrt/"><code>SQRT(num)</code></a>, <a
                 href="https://mariadb.com/kb/en/pow/"><code>POW(base, exponente)</code></a>: raíz cuadrada de
-              <code>num</code>, potencia de <code>base</code> elevado a <code>exponente</code></li>
+              <code>num</code>, potencia de <code>base</code> elevado a <code>exponente</code>
+            </li>
             <li><a href="https://mariadb.com/kb/en/rand/"><code>RAND()</code></a>: obtiene un número aleatorio</li>
             <li><a href="https://mariadb.com/kb/en/round/"><code>ROUND(num)</code></a> / <a
                 href="https://mariadb.com/kb/en/floor/"><code>FLOOR(num)</code></a> / <a
                 href="https://mariadb.com/kb/en/ceiling/"><code>CEILING(num)</code></a>: redondea un número, por exceso
               o por defecto</li>
             <li><a href="https://mariadb.com/kb/en/abs/"><code>TRUNCATE(num,d)</code></a>: trunca <code>num</code> con
-              <code>d</code> decimales</li>
+              <code>d</code> decimales
+            </li>
           </ul>
           <p>Veamos unos ejemplos de redondeo de cantidades:</p>
           <div class="highlight">
@@ -1587,7 +1603,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
           </div>
           <p>Finalmente, a la hora de indicar el nombre de las columnas de ordenación, también podemos un número
             indicando la posición de la columna (en el siguiente ejemplo, 1 referencia a <code>NomEmp</code> y 2 a
-            <code>NifEmp</code>):</p>
+            <code>NifEmp</code>):
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+-----------+</span>
@@ -1626,11 +1643,13 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
             <p>En ocasiones, cuando queremos obtener una muestra de los datos, en vez de hacer una consulta
               <code>select * from ...</code> para comprobar qué datos almacena una determinada tabla, es mucho mejor
               acostumbrarse a realizar un <code>select * from ... LIMIT 10</code>. De este modo, no sobrecargamos el
-              servidor ni incrementamos el trafico de datos.</p>
+              servidor ni incrementamos el trafico de datos.
+            </p>
           </div>
           <p>Si no queremos coger los primeros elementos, podemos hacer uso <a
               href="https://mariadb.com/kb/en/limit/"><code>LIMIT inicio, cantidad</code></a>, teniendo en cuenta que
-            <code>inicio</code> referencia al desplazamiento, es decir, la cantidad de filas que se ignorarán.</p>
+            <code>inicio</code> referencia al desplazamiento, es decir, la cantidad de filas que se ignorarán.
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+---------------------------+</span>
@@ -1676,7 +1695,8 @@ FETCH FIRST 1 ROW WITH TIES;
             <code>expresion1 operador expresion2</code>, pudiendo utilizar los operadores relacionales
             <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>,
             <code>!=</code>, así como los operadores lógicos como <code>and</code>, <code>or</code>, <code>not</code>,
-            etc...</p>
+            etc...
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">&#39;DIRGE&#39;</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+--------+------------+</span>
@@ -1716,7 +1736,8 @@ FETCH FIRST 1 ROW WITH TIES;
           </div>
           <p>Si el conjunto de valores a comparar forma parte de un rango numérico, es mejor utilizar <a
               href="https://mariadb.com/kb/en/between-and/"><code>BETWEEN .. AND</code></a>, siguiendo la sintaxis
-            <code>expresión1 [NOT] BETWEEN expresión2 AND expresión3</code>:</p>
+            <code>expresión1 [NOT] BETWEEN expresión2 AND expresión3</code>:
+          </p>
           <p>Así pues, la misma consulta la podemos reescribir así:</p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">1000000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">2000000</span><span class="p">;</span>
@@ -1761,7 +1782,8 @@ FETCH FIRST 1 ROW WITH TIES;
           <p>Si en vez de un rango, queremos comprobar si el resultado de la expresión coincide con uno de entre una
             lista de valores (los cuales deben coincidir en su tipo de datos), usaremos el operador <a
               href="https://mariadb.com/kb/en/in/"><code>IN</code></a> con la sintaxis
-            <code>exp1 [NOT] IN (const1 [,const2])</code></p>
+            <code>exp1 [NOT] IN (const1 [,const2])</code>
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Codemp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Codemp</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+-----------------------------+------------+</span>
@@ -1794,7 +1816,8 @@ FETCH FIRST 1 ROW WITH TIES;
               href="https://mariadb.com/kb/en/like/"><code>LIKE</code></a> acompañado de un patrón, siguiendo la
             sintaxis <code>columna [NOT] LIKE patrón</code>.</p>
           <p>En el patrón de búsqueda, podemos emplear los comodines <code>_</code> para indicar que ocupa un carácter y
-            <code>%</code> para cero o más caracteres.</p>
+            <code>%</code> para cero o más caracteres.
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Centros que acaban en Sur</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">PobCen</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Nomcen</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%Sur&#39;</span><span class="p">;</span>
@@ -1849,7 +1872,8 @@ FETCH FIRST 1 ROW WITH TIES;
               title="Permanent link">&para;</a></h4>
           <p>Para comprobar si un campo contiene valores nulos (o si queremos saber si tiene algún valor, sea cual sea)
             usaremos el operador <a href="https://mariadb.com/kb/en/is-null/"><code>IS NULL</code></a> con la sintaxis
-            <code>columna IS [NOT] NULL</code>:</p>
+            <code>columna IS [NOT] NULL</code>:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-------------------------+----------+</span>
@@ -1878,7 +1902,8 @@ FETCH FIRST 1 ROW WITH TIES;
           <h4 id="operadores-logicos">Operadores lógicos<a class="headerlink" href="06sql.html#operadores-logicos"
               title="Permanent link">&para;</a></h4>
           <p>Respecto a las condiciones compuestas, podemos unir operadores mediante <code>AND</code> (conjunción),
-            <code>OR</code> (disyunción) y <code>NOT</code> (negación).</p>
+            <code>OR</code> (disyunción) y <code>NOT</code> (negación).
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
 </span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">&#39;ADMZS&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
@@ -1974,7 +1999,8 @@ FETCH FIRST 1 ROW WITH TIES;
           <p>La operación <code>[INNER] JOIN</code> combina registros de dos tablas siempre que existan valores
             coincidentes en un campo común (clave ajena con clave primaria). Para ello, se indica una tabla seguida
             (opcionalmente con el prefijo <code>INNER</code>) de <code>JOIN</code> con la segunda tabla, y tras
-            <code>ON</code>, igualamos la clave ajena con la primaria:</p>
+            <code>ON</code>, igualamos la clave ajena con la primaria:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">empleado</span><span class="p">.</span><span class="n">CodDep</span><span class="o">=</span><span class="n">departamento</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+----------------------------+</span>
@@ -2007,7 +2033,8 @@ FETCH FIRST 1 ROW WITH TIES;
             en el <code>WHERE</code>, uniendo la clave ajena con la clave primaria de la tabla a la que referencia.
             Aunque a nivel funcional el resultado es el mismo, es recomendable utilizar la sintaxis
             <code>JOIN ... ON</code> por legibilidad, y es probable, que el optimizador de consultas del SGBD funcione
-            mejor:</p>
+            mejor:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">--- SQL 86</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
@@ -2161,7 +2188,8 @@ FETCH FIRST 1 ROW WITH TIES;
             departamento principal necesitamos referencias a la tabla <code>departamento</code> mediante un
             <em>join</em> consigo misma. Para ello, es imperativo utilizar un alias descriptivo para identificar el rol
             de la tabla en cada caso (en nuestro caso, <code>sec</code> como departamento secundario y <code>prin</code>
-            para los principales):</p>
+            para los principales):
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">sec</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">CodDepSec</span><span class="p">,</span><span class="w"> </span><span class="n">sec</span><span class="p">.</span><span class="n">NomDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NomDepSec</span><span class="p">,</span><span class="w"> </span><span class="n">prin</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">CodDepPrin</span><span class="p">,</span><span class="w"> </span><span class="n">prin</span><span class="p">.</span><span class="n">NomDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NomDepPrin</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">prin</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">sec</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">prin</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sec</span><span class="p">.</span><span class="n">CodDepDep</span><span class="p">;</span>
@@ -2212,7 +2240,8 @@ FETCH FIRST 1 ROW WITH TIES;
           <p>Si en cambio queremos recuperar todos los empleados, y si tienen habilidades, su información, haríamos un
             <em>left join</em>. Ahora se muestran todos los empleados, y además, aquel que tenga habilidades, aparecerá
             tantas veces como habilidades tenga. En cambio, de los que no tienen habilidades aparecerá <code>NULL</code>
-            en las columnas correspondientes:</p>
+            en las columnas correspondientes:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
@@ -2237,7 +2266,8 @@ FETCH FIRST 1 ROW WITH TIES;
           </div>
           <p>Si cambiamos la consulta y hacemos un <em>right</em> join, recuperaremos la misma información que con un
             <em>inner join</em> ya que en la tabla <code>habemp</code> no podemos tener registros que no referencien a
-            empleados existentes, por la propia definición de integridad referencial.</p>
+            empleados existentes, por la propia definición de integridad referencial.
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
@@ -2255,7 +2285,8 @@ FETCH FIRST 1 ROW WITH TIES;
 </code></pre>
           </div>
           <p>No obstante, si cambiamos el orden de las tablas en el <em>join</em>, sí que tiene sentido hacer un
-            <em>right join</em>:</p>
+            <em>right join</em>:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
@@ -2298,7 +2329,8 @@ FETCH FIRST 1 ROW WITH TIES;
 </code></pre>
           </div>
           <p>Si quiero recuperar todos los empleados y el nombre de la habilidad si la tienen, tenemos que hacer un
-            <em>left join</em>:</p>
+            <em>left join</em>:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
@@ -2319,7 +2351,8 @@ FETCH FIRST 1 ROW WITH TIES;
           <p>¿Qué ha pasado? ¿Por qué sólo 6 registros? Al realizar el segundo <em>join</em>, ha eliminado aquellos
             registros que tienen la habilidad nula.</p>
           <p>Pero ¿cómo lo solucionamos? Primero vamos a unir los códigos y habilidades, y luego hacemos el
-            <em>join</em> por la derecha con todos los empleados:</p>
+            <em>join</em> por la derecha con todos los empleados:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span>
@@ -2390,7 +2423,8 @@ FETCH FIRST 1 ROW WITH TIES;
           </h4>
           <p>Se conoce como <em>antijoin</em> los registros obtenidos de una tabla que no se combinan con otra. Es
             decir, son los registros que no se seleccionan al realizar un <em>inner join</em>, y de ahí el prefijo
-            <em>anti</em>.</p>
+            <em>anti</em>.
+          </p>
           <p>Para aprender su uso, vamos a recuperar los empleados que no tienen habilidades:</p>
           <figure style="align: center;">
             <img src="../images/06antijoin.png" width="404" title="Antijoin entre empleados y habilidades">
@@ -2440,7 +2474,8 @@ FETCH FIRST 1 ROW WITH TIES;
           </div>
           <p>Así pues, si sobre el <em>left join</em>, nos quedamos con los que tienen la clave primaria referenciada
             nula, obtendremos justo los empleados que no tienen habilidades (operación que se conoce como
-            <em>anti-join</em>):</p>
+            <em>anti-join</em>):
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
@@ -2469,7 +2504,8 @@ FETCH FIRST 1 ROW WITH TIES;
           <p>Si necesitamos dicho resultado, podemos simularlo haciendo una unión entre un <em>left join</em> y un
             <em>right join</em>. De esta manera obtendríamos todos los registros de T1 y los valores de T2 relacionados
             o nulos en los que no, y en una segunda consulta, los valores de T1 relacionados o nulos en los que no, y
-            todos los valores de T2:</p>
+            todos los valores de T2:
+          </p>
           <div class="highlight">
             <pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span>
@@ -2591,7 +2627,8 @@ FETCH FIRST 1 ROW WITH TIES;
                 <li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema4/index.html">Consulta de bases de
                     datos</a> de gestionbasesdatos.readthedocs.io</li>
                 <li><a href="https://www.cs.us.es/cursos/bd-2023/temas/BD-Tema-5.pdf">Introducción a SQL</a>, por
-                  <em>Luis Valencia</em> y <em>David Orellana</em>, de la <em>Universidad de Sevilla</em>.</li>
+                  <em>Luis Valencia</em> y <em>David Orellana</em>, de la <em>Universidad de Sevilla</em>.
+                </li>
               </ul>
             </li>
           </ul>
@@ -2609,7 +2646,8 @@ FETCH FIRST 1 ROW WITH TIES;
                 <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr> // 3p) Una vez cargada la
                 base de datos de <code>empresa</code> utilizada en los <a href="06sql.html#consultas-sql">apuntes</a>,
                 tras comprobar la estructura de las tablas <code>empleado</code> y <code>departamento</code>, se pide
-                realizar las siguientes consultas:</p>
+                realizar las siguientes consultas:
+              </p>
               <ol>
                 <li>Lista el nombre de todos los departamentos que hay en la tabla <code>departamento</code>.</li>
                 <li>Lista los nombres y los presupuestos de todos los departamentos.</li>
@@ -2636,16 +2674,19 @@ FETCH FIRST 1 ROW WITH TIES;
                   title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr>
                 // <abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>,
                 <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr> // 3p) Sobre la base de
-                datos <code>empresa</code>, y haciendo uso de funciones, realiza las siguientes consultas:</p>
+                datos <code>empresa</code>, y haciendo uso de funciones, realiza las siguientes consultas:
+              </p>
               <ol>
                 <li>Lista los nombres y sus presupuestos de todos los departamentos de la tabla
-                  <code>departamento</code>, convirtiendo los nombres a mayúscula.</li>
+                  <code>departamento</code>, convirtiendo los nombres a mayúscula.
+                </li>
                 <li>Lista los nombres y los salarios de todos los empleados, convirtiendo los nombres a minúsculas.</li>
                 <li>Lista el nombre de todos los empleados en una columna, y en otra columna recupera en mayúsculas los
                   dos primeros caracteres del código del departamento.</li>
                 <li>Lista el código del empleado y del departamento de todos los empleados, así como un código formado
                   por los datos de estos campos unidos más la extensión telefónica (si no tienen teléfono, cambiar por
-                  <code>XXXX</code>).</li>
+                  <code>XXXX</code>).
+                </li>
                 <li>Lista el nombre de los empleados, así como un campo para su nombre y otro para sus apellidos (puedes
                   utilizar las funciones <a
                     href="https://mariadb.com/kb/en/locate/"><code>LOCATE(subcadena, cadena)</code></a> y <a
@@ -2657,7 +2698,8 @@ FETCH FIRST 1 ROW WITH TIES;
                   con un único decimal.</li>
                 <li>Muestra el nombre de los empleados, la cantidad de hijos que tiene, y el tipo de familia, mostrando
                   <code>Sin familia</code> si no tiene hijos, <code>Ordinaria</code> si sólo tiene un hijo,
-                  <code>Semi-numerosa</code> si tiene 2 hijos y <code>Numerosa</code> si tiene 3 o más hijos.</li>
+                  <code>Semi-numerosa</code> si tiene 2 hijos y <code>Numerosa</code> si tiene 3 o más hijos.
+                </li>
               </ol>
             </li>
           </ul>
@@ -2705,7 +2747,8 @@ Añadir alguna consulta que realice algún cálculo agregado
               <em>Tienda de informática</em>, que podemos encontrar en las <a
                 href="https://josejuansanchez.org/bd/ejercicios-consultas-sql/index.html">actividades propuestas</a> en
               los apuntes del docente <em>José Juan Sánchez</em>. Puedes comprobarlas en <a
-                href="https://sql-playground.com/">https://sql-playground.com/</a>.</li>
+                href="https://sql-playground.com/">https://sql-playground.com/</a>.
+            </li>
           </ul>
           <p><a name="AP605"></a></p>
           <ul>
@@ -2719,7 +2762,8 @@ Añadir alguna consulta que realice algún cálculo agregado
               <em>Gestión de empleados</em>, que podemos encontrar en las <a
                 href="https://josejuansanchez.org/bd/ejercicios-consultas-sql/index.html">actividades propuestas</a> en
               los apuntes del docente <em>José Juan Sánchez</em>. Puedes comprobarlas en <a
-                href="https://sql-playground.com/">https://sql-playground.com/</a>.</li>
+                href="https://sql-playground.com/">https://sql-playground.com/</a>.
+            </li>
           </ul>
           <p><a name="AC606"></a></p>
           <ul>
@@ -2738,18 +2782,21 @@ Añadir alguna consulta que realice algún cálculo agregado
                   antes del <code>1/1/92</code>. </li>
                 <li>Listar el nombre de los trabajadores que no tienen extensión telefónica.</li>
                 <li>Listar el nombre y presupuesto de los departamentos no ubicados en los centros con código
-                  <code>DIGE</code> o <code>FAZS</code>.</li>
+                  <code>DIGE</code> o <code>FAZS</code>.
+                </li>
                 <li>Listar el nombre y salario de los trabajadores que ganen menos de 2 o más de 5 millones de euros.
                 </li>
                 <li>Listar el código y nombre de los empleados cuyo código sea distinto de <code>1</code>,
-                  <code>4</code>, <code>6</code>, <code>8</code> y de <code>10</code>.</li>
+                  <code>4</code>, <code>6</code>, <code>8</code> y de <code>10</code>.
+                </li>
                 <li>Listar el nombre y fecha de nacimiento de los hijos de empleado que tengan como parte de su nombre o
                   apellidos la secuencia de letras <code>León</code>.</li>
                 <li>Listar el nombre y salario anual de los empleados que ganan menos de 4 millones pero que ingresaron
                   en la empresa antes de 1985.</li>
                 <li>
                   <p>Listar el nombre y NIF de los empleados que tienen un NIF con la letra <code>D</code> o
-                    <code>V</code>, y que:</p>
+                    <code>V</code>, y que:
+                  </p>
                   <p>a) Trabajan en los departamentos <code>IN&amp;DI</code> o <code>DIRGE</code> y ganan más de 5
                     millones; o<br />
                     b) Fueron contratados en 1994.</p>
@@ -2793,7 +2840,8 @@ Añadir alguna consulta que realice algún cálculo agregado
               <em>Tienda de informática</em>, que podemos encontrar en las <a
                 href="https://josejuansanchez.org/bd/ejercicios-consultas-sql/index.html">actividades propuestas</a> en
               los apuntes del docente <em>José Juan Sánchez</em>. Puedes comprobarlas en <a
-                href="https://sql-playground.com/">https://sql-playground.com/</a>.</li>
+                href="https://sql-playground.com/">https://sql-playground.com/</a>.
+            </li>
           </ul>
           <p><a name="AP609"></a></p>
           <ul>
@@ -2807,7 +2855,8 @@ Añadir alguna consulta que realice algún cálculo agregado
               <em>Gestión de empleados</em>, que podemos encontrar en las <a
                 href="https://josejuansanchez.org/bd/ejercicios-consultas-sql/index.html">actividades propuestas</a> en
               los apuntes del docente <em>José Juan Sánchez</em>. Puedes comprobarlas en <a
-                href="https://sql-playground.com/">https://sql-playground.com/</a>.</li>
+                href="https://sql-playground.com/">https://sql-playground.com/</a>.
+            </li>
           </ul>
           <p><a name="AC610"></a></p>
           <ul>
@@ -2837,7 +2886,8 @@ Añadir alguna consulta que realice algún cálculo agregado
                     <li>el código de departamento para aquellos departamentos que tienen empleados.</li>
                     <li>el código de departamento para aquellos departamentos que no tienen empleados.</li>
                     <li>los empleados que no son directivos de ningún departamento (no aparecen en
-                      <code>departamento.CodEmpDir</code>).</li>
+                      <code>departamento.CodEmpDir</code>).
+                    </li>
                     <li>los empleados que no son directivos de ningún departamento ni de ningún centro</li>
                   </ol>
                 </li>
@@ -2894,7 +2944,8 @@ Añadir alguna consulta que realice algún cálculo agregado
                 externa)</em> de la base de datos de <em>Tienda de informática</em>, que podemos encontrar en las <a
                 href="https://josejuansanchez.org/bd/ejercicios-consultas-sql/index.html">actividades propuestas</a> en
               los apuntes del docente <em>José Juan Sánchez</em>. Puedes comprobarlas en <a
-                href="https://sql-playground.com/">https://sql-playground.com/</a>.</li>
+                href="https://sql-playground.com/">https://sql-playground.com/</a>.
+            </li>
           </ul>
           <p><a name="AP613"></a></p>
           <ul>
@@ -2911,7 +2962,8 @@ Añadir alguna consulta que realice algún cálculo agregado
                 externa)</em> de la base de datos de <em>Gestión de empleados</em>, que podemos encontrar en las <a
                 href="https://josejuansanchez.org/bd/ejercicios-consultas-sql/index.html">actividades propuestas</a> en
               los apuntes del docente <em>José Juan Sánchez</em>. Puedes comprobarlas en <a
-                href="https://sql-playground.com/">https://sql-playground.com/</a>.</li>
+                href="https://sql-playground.com/">https://sql-playground.com/</a>.
+            </li>
           </ul>
           <p><a name="PR614"></a></p>
           <ul>
@@ -2926,8 +2978,9 @@ Añadir alguna consulta que realice algún cálculo agregado
                 <abbr
                   title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>
                 // 10p) A partir de la base de datos <a
-                  href="resources/06bd-retail.sql"><code>06bd-retail.sql</code></a>, tras importarla en
-                <em>MariaDB</em>, se pide:</p>
+                  href="../resources/06bd-retail.sql"><code>06bd-retail.sql</code></a>, tras importarla en
+                <em>MariaDB</em>, se pide:
+              </p>
               <ol>
                 <li>Obtén el diagrama EER mediante <em>DBeaver</em> (si quieres, puedes probar a utilizar <em>MySQL
                     Workbench</em>).</li>
@@ -2936,7 +2989,8 @@ Añadir alguna consulta que realice algún cálculo agregado
                 <li>Realiza las siguientes consultas:<ol>
                     <li>¿Cuántas categorías hay en total?</li>
                     <li>Recupera todos los posibles estados que puede tener un pedido (revisa la columna
-                      <code>orders.order_status</code>).</li>
+                      <code>orders.order_status</code>).
+                    </li>
                     <li>Recupera el nombre y el primer apellido de los clientes que viven en <code>Caguas</code>.</li>
                     <li>¿Cuál es el producto más caro? ¿Y el más barato?</li>
                     <li>¿Cuántos pedidos han realizado clientes que viven en el <code>Bronx</code>?</li>
@@ -2945,7 +2999,8 @@ Añadir alguna consulta que realice algún cálculo agregado
                     <li>Recupera el nombre, email y ciudad de los clientes que tengan pedidos pendientes de pago.</li>
                     <li>Recupera el nombre de los departamentos que tengan pedidos pendientes de pago.</li>
                     <li>Recupera el nombre de los departamentos que han vendido algún producto a un cliente que vive en
-                      <code>Phoenix</code>.</li>
+                      <code>Phoenix</code>.
+                    </li>
                     <li>Recupera todos los productos cuya categoría contenga la palabra <code>Golf</code>.</li>
                     <li>Para todos los elementos de pedido, comprueba si el valor del subtotal cuadra con el producto
                       del precio por su cantidad.</li>
@@ -2971,7 +3026,8 @@ Añadir alguna consulta que realice algún cálculo agregado
                   title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>
                 // 10p) A partir del modelo físico creado en la actividad <a href="05ddl.html#PY516">PY516</a> del <a
                   href="05ddl.html#reto-ii-creamos">Reto II - Creamos</a>, en esta actividad nos vamos a centrar en
-                definir una serie de consultas para explotar nuestra base de datos.</p>
+                definir una serie de consultas para explotar nuestra base de datos.
+              </p>
               <p>Para ello, se pide un informe que detalle:</p>
               <ul>
                 <li>Definición de 10 consultas que extraigan información, las cuales deben utilizar combinaciones de
@@ -3003,7 +3059,8 @@ Añadir alguna consulta que realice algún cálculo agregado
               <abbr
                 title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>
               // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos
-              un par de líneas para cada una de las cuestiones.</li>
+              un par de líneas para cada una de las cuestiones.
+            </li>
           </ul>
           <!--
 https://mystery.knightlab.com/
