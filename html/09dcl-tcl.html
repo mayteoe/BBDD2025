@@ -578,6 +578,22 @@
           <p>Hasta ahora hemos visto cómo crear usuarios y asignarles privilegios de forma genérica. Sin embargo, en un entorno real de desarrollo existe una práctica de seguridad fundamental que conviene interiorizar: <strong>nunca conectar una aplicación a la base de datos usando el usuario root o cualquier usuario con privilegios de administración</strong>.</p>
           <p>Cuando desplegamos una aplicación web, esta necesita acceder a la base de datos para realizar sus operaciones habituales: consultar datos, insertarlos, actualizarlos o borrarlos. Para ello, la aplicación almacena en su configuración las credenciales de conexión. Esto implica un riesgo real: si la aplicación es comprometida (por ejemplo, mediante una inyección SQL o una vulnerabilidad en el código), el atacante tendría acceso a la base de datos con los permisos del usuario configurado.</p>
           <p>El <strong>principio de mínimos privilegios</strong> dicta que ese usuario de aplicación debe tener <strong>únicamente los permisos estrictamente necesarios</strong> para funcionar, y nada más. Así, aunque la aplicación sea vulnerada, el daño queda limitado a lo que ese usuario puede hacer.</p>
+          <h4 id="usuario-limitado">El concepto: ¿Cómo nos salva un usuario limitado?<a class="headerlink" href="09dcl-tcl.html#usuario-limitado" title="Permanent link">&para;</a></h4>
+          <p>La <strong>inyección SQL</strong> ocurre cuando una aplicación web no limpia correctamente lo que el usuario escribe en un formulario y lo envía directamente a la base de datos.</p>
+          <p><strong>Escenario A: usuario root (catástrofe)</strong></p>
+          <p>Si la web usa <code>root</code>, un atacante puede escribir en un campo como el DNI una entrada maliciosa como:</p>
+          <div class="highlight">
+            <pre><span></span><code>&#39; OR 1=1; DROP DATABASE gestion_escolar; --
+</code></pre>
+          </div>
+          <p>Resultado: el servidor tiene permisos para borrar todo. Adiós a los datos.</p>
+          <p><strong>Escenario B: usuario ac901local (dique de contención)</strong></p>
+          <p>Si la web usa un usuario con permisos limitados (por ejemplo, solo <code>SELECT</code> e <code>INSERT</code>), el atacante puede intentar el mismo <code>DROP DATABASE</code>, pero MariaDB responderá:</p>
+          <div class="highlight">
+            <pre><span></span><code>Access denied for user &#39;ac901local&#39;@&#39;localhost&#39;
+</code></pre>
+          </div>
+          <p>Resultado: el sistema sobrevive porque la cuenta de la aplicación no tiene permisos de administración.</p>
           <p>La arquitectura recomendada establece, por tanto, una separación clara entre dos tipos de acceso:</p>
           <ul>
             <li><strong>El usuario de aplicación</strong> (<code>app_user</code>, <code>tienda_app</code>, <code>erp_web</code>, etc.) es el que usa el backend para conectarse. Tiene permisos de <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code> y <code>DELETE</code> sobre las tablas necesarias, pero no puede ejecutar <code>DROP</code>, <code>GRANT</code>, <code>CREATE</code> ni acceder a otras bases de datos del sistema.</li>
