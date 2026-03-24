@@ -165,7 +165,7 @@
           <h3 id="programacion-de-aula-7h">Programación de Aula (7h)<a class="headerlink"
               href="09dcl-tcl.html#programacion-de-aula-7h" title="Permanent link">&para;</a></h3>
           <p>Esta unidad es la novena, impartiéndose a mitad de la segunda evaluación, a principios de febrero, con una
-            duración estimada de 7 sesiones lectivas:</p>
+            duración estimada de 5 sesiones lectivas:</p>
           <table>
             <thead>
               <tr>
@@ -574,6 +574,51 @@
               href="https://mariadb.com/kb/en/drop-role/"><code>DROP ROLE</code></a>:</p>
           <p>Más información en la <a href="https://mariadb.com/kb/en/roles_overview/">documentación oficial</a> de
             <em>MariaDB</em>.</p>
+          <h3 id="usuario-de-aplicacion">Usuario de aplicación<a class="headerlink" href="09dcl-tcl.html#usuario-de-aplicacion" title="Permanent link">&para;</a></h3>
+          <p>Hasta ahora hemos visto cómo crear usuarios y asignarles privilegios de forma genérica. Sin embargo, en un entorno real de desarrollo existe una práctica de seguridad fundamental que conviene interiorizar: <strong>nunca conectar una aplicación a la base de datos usando el usuario root o cualquier usuario con privilegios de administración</strong>.</p>
+          <p>Cuando desplegamos una aplicación web, esta necesita acceder a la base de datos para realizar sus operaciones habituales: consultar datos, insertarlos, actualizarlos o borrarlos. Para ello, la aplicación almacena en su configuración las credenciales de conexión. Esto implica un riesgo real: si la aplicación es comprometida (por ejemplo, mediante una inyección SQL o una vulnerabilidad en el código), el atacante tendría acceso a la base de datos con los permisos del usuario configurado.</p>
+          <p>El <strong>principio de mínimos privilegios</strong> dicta que ese usuario de aplicación debe tener <strong>únicamente los permisos estrictamente necesarios</strong> para funcionar, y nada más. Así, aunque la aplicación sea vulnerada, el daño queda limitado a lo que ese usuario puede hacer.</p>
+          <p>La arquitectura recomendada establece, por tanto, una separación clara entre dos tipos de acceso:</p>
+          <ul>
+            <li><strong>El usuario de aplicación</strong> (<code>app_user</code>, <code>tienda_app</code>, <code>erp_web</code>, etc.) es el que usa el backend para conectarse. Tiene permisos de <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code> y <code>DELETE</code> sobre las tablas necesarias, pero no puede ejecutar <code>DROP</code>, <code>GRANT</code>, <code>CREATE</code> ni acceder a otras bases de datos del sistema.</li>
+            <li><strong>El usuario administrador</strong> (<code>root</code>, <code>dba</code>) se reserva exclusivamente para tareas de mantenimiento, migraciones y gestión de la propia base de datos. Nunca debe aparecer en el fichero de configuración de una aplicación en producción.</li>
+          </ul>
+          <p>Por ejemplo, para una aplicación de tienda online, crearíamos su usuario de la siguiente forma:</p>
+          <div class="highlight">
+            <pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Crear el usuario de aplicación (solo accesible desde el servidor de la app)</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;tienda_app&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.1.10&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;contraseña_segura&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- Otorgar únicamente los permisos necesarios</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">,</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">tienda</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;tienda_app&#39;</span><span class="o">@</span><span class="s1">&#39;192.168.1.10&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- Aplicar los cambios</span>
+<span class="linenos" data-linenos="8 "></span><span class="k">FLUSH</span><span class="w"> </span><span class="n">PRIVILEGES</span><span class="p">;</span>
+</code></pre>
+          </div>
+          <p>Nótese que el <em>host</em> se restringe a la dirección IP del servidor de la aplicación. Así, aunque alguien obtuviera las credenciales, no podría conectarse desde otra máquina.</p>
+          <p>Además, en aplicaciones más complejas es habitual ir un paso más allá y segmentar los permisos por función: un usuario de solo lectura para informes y consultas analíticas, y un usuario de escritura para las operaciones transaccionales. Esto reduce aún más la superficie de ataque.</p>
+          <div class="admonition tip">
+            <p class="admonition-title">Consejo de seguridad</p>
+            <p>La contraseña del usuario de aplicación debe almacenarse en <strong>variables de entorno</strong> o en un <strong>gestor de secretos</strong> (como HashiCorp Vault o los Secrets de Docker/Kubernetes), nunca escrita directamente en el código fuente del proyecto.</p>
+          </div>
+          <h4 id="actividades">Actividades<a class="headerlink" href="09dcl-tcl.html#actividades" title="Permanent link">&para;</a></h4>
+          <p><strong>AC903-A. (RABD.2 // CE2g, CE2h // 3p)</strong> Sobre la instalación de MariaDB que utilizas habitualmente, simula la configuración de seguridad para una aplicación de gestión de empleados. Realiza las siguientes operaciones, indicando los comandos SQL necesarios y adjuntando capturas de pantalla:</p>
+          <ol>
+            <li>Crea un usuario <code>rrhh_app</code> identificado con la contraseña <code>rrhh2025</code> que solo pueda conectarse desde <code>localhost</code>.</li>
+            <li>Otórgale permisos de <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code> y <code>DELETE</code> únicamente sobre la base de datos <code>empresa</code>.</li>
+            <li>Comprueba con <code>SHOW GRANTS</code> que los permisos asignados son correctos.</li>
+            <li>Conéctate con el usuario <code>rrhh_app</code> e intenta ejecutar un <code>DROP TABLE</code> sobre cualquier tabla. Explica qué sucede y por qué.</li>
+            <li>Conéctate con el mismo usuario e intenta acceder a la base de datos <code>mysql</code>. Explica el resultado.</li>
+            <li>Vuelve a conectarte como administrador y revoca el permiso de <code>DELETE</code> sobre <code>empresa</code>. Comprueba de nuevo los permisos resultantes.</li>
+          </ol>
+          <p><strong>AC903-B. (RABD.2 // CE2g, CE2h // 3p)</strong> Reflexiona sobre el siguiente escenario y responde razonadamente a las preguntas:</p>
+          <p><em>Una empresa tiene una aplicación web de comercio electrónico conectada a MariaDB. El desarrollador, por comodidad, configuró la aplicación para conectarse con el usuario <code>root</code> y contraseña <code>root</code>. Un atacante descubre una vulnerabilidad de inyección SQL en el formulario de búsqueda de productos.</em></p>
+          <ol>
+            <li>¿Qué operaciones podría llegar a ejecutar el atacante sobre la base de datos? Lista al menos cinco acciones concretas que serían posibles con ese usuario.</li>
+            <li>Si en cambio la aplicación estuviera conectada con un usuario <code>tienda_ro</code> que solo tuviera permiso de <code>SELECT</code> sobre la tabla <code>productos</code>, ¿qué limitaría el impacto del ataque? ¿Qué seguiría siendo un riesgo?</li>
+            <li>Diseña la política de usuarios que aplicarías en esta tienda online. Crea al menos dos usuarios diferenciados (uno para operaciones de escritura del frontend y otro de solo lectura para el módulo de informes), indicando los comandos SQL necesarios con los permisos mínimos para cada uno.</li>
+            <li>¿En qué fichero o mecanismo guardarías las credenciales de estos usuarios en un proyecto real? Justifica tu respuesta.</li>
+          </ol>
           <h3 id="phpmyadmin">PhpMyAdmin<a class="headerlink" href="09dcl-tcl.html#phpmyadmin"
               title="Permanent link">&para;</a></h3>
           <p>Si queremos comprobar los usuarios existentes mediante PhpMyAdmin, podemos entrar a la opción <em>Cuentas
@@ -1359,6 +1404,7 @@ flowchart LR
                   cualquier lugar. Comprueba que puedes acceder con el nuevo usuario.</li>
                 <li>Modifica la contraseña del usuario <code>ac901remoto</code> para que sea <code>severo</code>.
                   Comprueba que puedes acceder con la nueva contraseña.</li>
+                  <li>Comprueba los permisos efectivos que tiene este usuario en nuestra BBDD.</li>
                 <li>Vuelve a comprobar los usuarios existentes en nuestro SGBD.</li>
                 <li>Elimina el usuario <code>ac901remoto</code>.</li>
               </ol>
