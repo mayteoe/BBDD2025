@@ -1,0 +1,711 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bases de datos no-relacionales / NoSQL - Bases de datos</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/12nosql.css">
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+</head>
+<body class="page">
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="../index.html" class="header__logo">
+          <img src="../images/bd.png" alt="Logo Bases de Datos" class="header__logo-img">
+          <span class="header__title">Bases de Datos</span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <nav class="nav">
+    <div class="container">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="../index.html" class="nav__link">Inicio</a></li>
+        <li class="nav__item"><a href="01intro-new.html" class="nav__link">1. Sistemas de Almacenamiento</a></li>
+        <li class="nav__item"><a href="02er.html" class="nav__link">2. Modelo E/R</a></li>
+        <li class="nav__item"><a href="03mr.html" class="nav__link">3. Modelo Relacional</a></li>
+        <li class="nav__item"><a href="04mr-eer.html" class="nav__link">4. TransformaciÃ³n</a></li>
+        <li class="nav__item"><a href="05ddl.html" class="nav__link">5. DDL y DML</a></li>
+        <li class="nav__item"><a href="06sql.html" class="nav__link">6. Consultas SQL</a></li>
+        <li class="nav__item"><a href="07sql-group.html" class="nav__link">7. Agregaciones</a></li>
+        <li class="nav__item"><a href="08sql-subquerys.html" class="nav__link">8. Subconsultas</a></li>
+        <li class="nav__item"><a href="09dcl-tcl.html" class="nav__link">9. DCL y TCL</a></li>
+        <li class="nav__item"><a href="10plsql.html" class="nav__link">10. PL/SQL</a></li>
+        <li class="nav__item"><a href="11triggers.html" class="nav__link">11. Triggers</a></li>
+        <li class="nav__item"><a href="12nosql.html" class="nav__link nav__link--active">12. NoSQL</a></li>
+        <li class="nav__item"><a href="13mongodb.html" class="nav__link">13. MongoDB</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="main">
+    <div class="container">
+      <article class="article">
+        <div class="article__content">
+
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="tags.html#tag:nosql" class="md-tag">NoSQL</a>
+      
+    
+      
+      
+      
+        <a href="tags.html#tag:ra1" class="md-tag">RA1</a>
+      
+    
+      
+      
+      
+        <a href="tags.html#tag:ra7" class="md-tag">RA7</a>
+      
+    
+  </nav>
+
+
+
+<h1 id="bases-de-datos-nosql">Bases de datos NoSQL<a class="headerlink" href="12nosql.html#bases-de-datos-nosql" title="Permanent link">&para;</a></h1>
+<h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="12nosql.html#propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>Una vez conocemos cómo funciona un SGBD relacional y cómo podemos explotarlo para extraer datos y manipularlos, en este último bloque nos centramos en soluciones no relacionales, y por lo tanto, finalizaremos el RA1 "<strong>Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores</strong>", además de comenzar a trabajar el RA7: "<strong>Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor</strong>".</p>
+<h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="12nosql.html#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
+<p>Respecto al <abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr>:</p>
+<ul>
+<li><strong><abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr></strong>: Se ha reconocido la utilidad de las bases de datos distribuidas.</li>
+<li><strong><abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr></strong>: Se han analizado las políticas de fragmentación de la información.</li>
+<li><strong><abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr></strong>: Se han reconocido los conceptos de <em>Big Data</em> y de la inteligencia de negocios.</li>
+</ul>
+<p>Respecto al <abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr>:</p>
+<ul>
+<li><strong><abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr></strong>: Se han caracterizado las bases de datos no relacionales. </li>
+<li><strong><abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr></strong>: Se han evaluado los principales tipos de bases de datos no relacionales.  </li>
+<li><strong><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr></strong>: Se han identificado los elementos utilizados en estas bases de datos.</li>
+<li><strong><abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr></strong>: Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.  </li>
+</ul>
+<h3 id="contenidos">Contenidos<a class="headerlink" href="12nosql.html#contenidos" title="Permanent link">&para;</a></h3>
+<p>Almacenamiento de la información:</p>
+<ul>
+<li>Bases de datos centralizadas y bases de datos distribuidas. Técnicas de fragmentación.</li>
+<li><em>Big Data</em>: introducción, análisis de datos, inteligencia de negocios.</li>
+</ul>
+<p>Bases de datos no relacionales:</p>
+<ul>
+<li>Uso de bases de datos no relacionales:  </li>
+<li>Características de las bases de datos no relacionales.  </li>
+<li>Tipos de bases de datos no relacionales.  </li>
+<li>Elementos de las bases de datos no relacionales.  </li>
+<li>Sistemas gestores de bases de datos no relacionales.  </li>
+<li>Herramientas de los sistemas gestores de bases de datos no relacionales para la gestión de la información almacenada. </li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Cuestionario inicial</p>
+<ol>
+<li>¿Qué es una base de datos distribuida?</li>
+<li>¿En qué consiste el escalado vertical? ¿Y el horizontal?</li>
+<li>Una base de datos distribuida, ¿qué escalado utiliza?</li>
+<li>¿Qué relación existe entre el <em>cloud</em> y las bases de datos distribuidas?</li>
+<li>¿En qué consiste el particionado de los datos?</li>
+<li>¿Para qué sirve la clave de particionado?</li>
+<li>¿En qué consiste la replicación?</li>
+<li>¿Una base de datos puede estar particionada y replicada a la vez?</li>
+<li>¿En qué consiste el Teorema de CAP?</li>
+<li>¿Qué significa el acrónimo BASE? ¿En qué ámbito se emplea?</li>
+<li>¿Qué es <em>Big Data</em>? ¿Y <em>Small Data</em>?</li>
+<li>¿Conoces las 3V del Big Data? ¿Hay más?</li>
+<li>¿Qué tipos de analítica de datos existen? ¿En qué consisten?</li>
+<li>¿Qué es un <em>dashboard</em> y para qué se utiliza?</li>
+<li>¿En qué consiste la ciencia de datos?</li>
+<li>¿Qué significa el acrónimo NoSQL?</li>
+<li>¿Por qué aparecieron las soluciones NoSQL?</li>
+<li>¿Qué tipos de modelos NoSQL existen? ¿Puedes nombrar una solución <em>software</em> para cada uno de ellos?</li>
+</ol>
+</div>
+<h3 id="programacion-de-aula-4h">Programación de Aula (4h)<a class="headerlink" href="12nosql.html#programacion-de-aula-4h" title="Permanent link">&para;</a></h3>
+<p>Esta unidad es la primera del bloque de soluciones <em>NoSQL</em>, la cual se imparte a final de curso, con una duración estimada de 9 horas, repartidas en 4 horas para el bloque introductorio a <em>NoSQL</em> y 5 horas más para trabajar con <em>Redis</em>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td><a href="12nosql.html#bases-de-datos-distribuidas">Bases de datos distribuidas</a></td>
+<td><a href="12nosql.html#AC1201">AC1201</a></td>
+<td><abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr>, <abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td><a href="12nosql.html#big-data">Big Data</a> y <em>Business Intelligence</em></td>
+<td><a href="12nosql.html#AC1202">AC1202</a></td>
+<td><abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr></td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td><a href="12nosql.html#nosql">NoSQL</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Investigación NoSQL</td>
+<td><a href="12nosql.html#AC1205">AC1205</a></td>
+<td><abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr>, <abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr>, <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr></td>
+</tr>
+</tbody>
+</table>
+<h2 id="almacenamiento-de-datos">Almacenamiento de datos<a class="headerlink" href="12nosql.html#almacenamiento-de-datos" title="Permanent link">&para;</a></h2>
+<p>Se puede decir que estamos en la <a href="https://en.wikipedia.org/wiki/Third_platform">tercera plataforma</a> del almacenamiento de datos. La primera llegó con los primeros computadores y se materializó en las bases de datos jerárquicas y en red, así como en el almacenamiento ISAM. La segunda vino de la mano de Internet y las arquitecturas cliente-servidor, lo que dio lugar a las bases de datos relacionales.</p>
+<p>La tercera se ve motivada por el <em>Big Data</em>, los dispositivos móviles, las arquitecturas <em>cloud</em>, las redes de IoT y las tecnologías/redes sociales. Es tal el volumen de datos que se genera que aparecen nuevos paradigmas como <em>NoSQL</em>, <em>NewSQL</em> y las plataformas de <em>Big Data</em>.</p>
+<p><em>NoSQL</em> aparece como una necesidad debida al creciente volumen de datos sobre usuarios, objetos y productos que las empresas tienen que almacenar, así como la frecuencia con la que se accede a los datos. Los SGDB relacionales existentes no fueron diseñados teniendo en cuenta la escalabilidad ni la flexibilidad necesaria por las frecuentes modificaciones que necesitan las aplicaciones modernas; tampoco aprovechan que el almacenamiento a día de hoy es muy barato, ni el nivel de procesamiento que alcanzan las máquinas actuales.</p>
+<figure style="align: center;">
+    <img src="../images/12nosql.png" width="800px" alt="Evolución de los sistemas de almacenamiento">
+    <figcaption>Evolución de los sistemas de almacenamiento</figcaption>
+</figure>
+
+<p>La solución es el despliegue de las aplicaciones y sus datos en clústeres de servidores, distribuyendo el procesamiento en múltiples máquinas.</p>
+<h2 id="bases-de-datos-distribuidas">Bases de Datos Distribuidas<a class="headerlink" href="12nosql.html#bases-de-datos-distribuidas" title="Permanent link">&para;</a></h2>
+<p>En la primera unidad aprendimos cómo se almacena la información en sistemas gestores de datos, normalmente centralizados. Esto es, todos los datos residen en un servidor o nodo central que sigue un modelo cliente-servidor, siendo los clientes las diferentes aplicaciones y servicios que consumen los datos mediante conexiones remotas gracias a Internet.</p>
+<p>Por un lado, las bases de datos centralizadas son sencillas de gestionar y mantener, y ofrecen una alta consistencia en los datos. Por contra, al centrar todos los datos en un único nodo, este se convierte en un SPOF (<em>Single Point of Failure</em>). Además, tienen una escalabilidad y rendimiento limitados a las características <em>hardware</em> de las máquinas donde corren.</p>
+<p>Si el sistema crece y la carga de usuario supera la capacidad del servidor, es necesario migrar a un modelo más potente (y normalmente más caro) como son las bases de datos distribuidas, donde los datos se reparten entre varias máquinas, particionando los datos o fragmentándolos, dependiendo de las necesidades de las aplicaciones, incrementando la complejidad del sistema para dar soporte a la sincronización de los datos y la tolerancia a fallos.</p>
+<p>Así pues, una <strong>base de datos distribuida</strong> es aquella en la cual existen diversos servidores gestores de bases de datos conectados entre sí formando una única base de datos con un solo esquema lógico.</p>
+<p>Un <strong>sistema gestor de bases de datos distribuidas</strong> (SGBDD) se define como el sistema software que permite la gestión de bases de datos distribuidas y hace la distribución de datos transparente para los usuarios.</p>
+<figure style="align: center;">
+    <img src="../images/12distributed-database.gif" width="800px" alt="Bases de Datos Distribuidas">
+    <figcaption>Bases de Datos Distribuidas</figcaption>
+</figure>
+
+<p>Los servidores de una base de datos distribuida suelen denominarse nodos y pueden estar físicamente cercanos (mismo edificio o grupo de edificios) y conectados a través de una red de área local, o pueden estar distribuidos geográficamente a grandes distancias y conectados a través de una red de larga distancia.</p>
+<p>En comparación con los sistemas centralizados, son más complejos en cuanto a su gestión, y la sincronización y consistencia de los datos es más difícil de garantizar.</p>
+<div class="admonition info">
+<p class="admonition-title">Cloud</p>
+<p>Las soluciones en la nube como AWS o Azure han propiciado la proliferación de soluciones distribuidas, al facilitar el despliegue automático de este tipo de soluciones, permitiendo una configuración elástica de la arquitectura.</p>
+</div>
+<h3 id="fragmentacion">Fragmentación<a class="headerlink" href="12nosql.html#fragmentacion" title="Permanent link">&para;</a></h3>
+<p>Dado el modo en el que se estructuran las bases de datos relacionales, normalmente escalan verticalmente, esto es, un único servidor cada vez más potente (más RAM, mejor CPU y almacenamiento) que almacena toda la base de datos para asegurar la disponibilidad continua de los datos. Esto se traduce en costes que se incrementan rápidamente, con un límites definidos por el propio hardware, y en un pequeño número de puntos críticos de fallo dentro de la infraestructura de datos.</p>
+<p>La solución es <strong>escalar horizontalmente</strong>, añadiendo nuevos servidores en vez de concentrarse en incrementar la capacidad de un único servidor, lo que permite tratar con conjuntos de datos más grandes de lo que sería capaz cualquier máquina por sí sola. Este escalado horizontal se conoce como <strong><em>Sharding</em></strong>, fragmentación o particionado de los datos.</p>
+<p>Si en un sistema relacional queremos particionar los datos, podemos distinguir entre fragmentación:</p>
+<ul>
+<li><strong>Horizontal</strong>: diferentes filas en diferentes particiones, por ejemplo, dividir a los clientes por región geográfica.</li>
+<li><strong>Vertical</strong>: diferentes columnas en particiones distintas, por ejemplo, separar los datos de contacto y financieros.</li>
+</ul>
+<figure style="align: center;">
+    <img src="../images/12sharding01.png" width="600px" alt="Particionado de los datos">
+    <figcaption>Particionado de los datos - digitalocean.com</figcaption>
+</figure>
+
+<p>Escalar horizontalmente una base de datos relacional entre muchas instancias de servidores se puede conseguir, pero normalmente conlleva el uso de SANs (<em>Storage Area Networks</em>) y otras triquiñuelas para hacer que el <em>hardware</em> actúe como un único servidor.</p>
+<p>Como los sistemas SQL no ofrecen esta prestación de forma nativa, bien los productos ofrecen complementos para permitirla, como <a href="https://www.mysql.com/products/cluster/">MySQL NDB Cluster</a> o <em>PostgreSQL</em> con <a href="https://www.citusdata.com/">Citus</a>, o bien los equipos de desarrollo se las tienen que ingeniar para conseguir desplegar múltiples bases de datos relacionales en varias máquinas, pudiendo utilizar una solución que actúe como intermediario (como <a href="https://proxysql.com/">ProxySQL</a>), o bien, desarrollando una solución propia, como puede ser:</p>
+<ul>
+<li>Los datos se almacenan en cada instancia de base de datos de manera autónoma</li>
+<li>El código de aplicación se desarrolla para distribuir los datos y las consultas y agregar los resultados de los datos a través de todas las instancias de bases de datos</li>
+<li>Se debe desarrollar código adicional para gestionar los fallos sobre los recursos, para realizar <em>joins</em> entre diferentes bases de datos, balancear los datos y/o replicarlos, etc…​</li>
+</ul>
+<p>Si no queremos complicarnos la vida administrando los sistemas y configurando todas las herramientas, siempre podemos optar por una solución <em>cloud</em> como <a href="https://aws.amazon.com/es/rds/">AWS RDS</a> o <a href="https://azure.microsoft.com/es-es/products/azure-sql/database">Azure SQL DB</a>, donde el tamaño de las instancias se puede modificar, así como configurar diferentes tipos de réplicas para mejorar la tolerancia a fallos.</p>
+<p>Dicho esto, con un planteamiento de una base de datos distribuida, muchos beneficios de las bases de datos como la integridad transaccional se ven comprometidos o incluso eliminados al emplear un escalado horizontal.</p>
+<h4 id="auto-sharding">Auto-sharding<a class="headerlink" href="12nosql.html#auto-sharding" title="Permanent link">&para;</a></h4>
+<p>Aunque las estudiaremos más adelante, conviene comentar que las bases de datos NoSQL normalmente soportan <strong><em>auto-sharding</em></strong>, lo que implica que de manera nativa y automáticamente se dividen los datos entre un número arbitrario de servidores, sin que la aplicación sea consciente de la composición del clúster de servidores. Los datos y las consultas se balancean entre los servidores.</p>
+<p>El particionado se realiza mediante un método consistente, como puede ser:</p>
+<ul>
+<li>
+<p>Por <strong>rangos</strong> de su id: por ejemplo "los usuarios del 1 al millón están en la partición 1" o "los usuarios cuyo nombre va de la A a la L" en una partición, en otra de la M a la Q, y de la R a la Z en la tercera.</p>
+<p><figure style="align: center;">
+    <img src="../images/12sharding03range.png"  alt="Particionado por rango" width="600px">
+    <figcaption>Particionado por rango - digitalocean.com</figcaption>
+</figure></p>
+</li>
+<li>
+<p>Por <strong>listas</strong>: dividiendo los datos por la categoría del dato, es decir, en el caso de datos sobre libros, las novelas en una partición, las recetas de cocina en otra, etc..</p>
+</li>
+<li>
+<p>Mediante un función <strong><em>hash</em></strong>, la cual devuelve un valor para un elemento que determine a qué partición pertenece.</p>
+<p><figure style="align: center;">
+    <img src="../images/12sharding02hash.png"  alt="Particionado por hash" width="600px">
+    <figcaption>Particionado por hash - digitalocean.com</figcaption>
+</figure></p>
+</li>
+</ul>
+<p>Independientemente del método, el atributo o clave que se elige para decidir a qué partición va cada dato se conoce como <em>Shard key</em>, o clave de particionado.</p>
+<h4 id="cuando-particionar">Cuando particionar<a class="headerlink" href="12nosql.html#cuando-particionar" title="Permanent link">&para;</a></h4>
+<p>El motivo para particionar los datos se debe a:</p>
+<ul>
+<li>limitaciones de almacenamiento: los datos no caben en un único servidor, tanto a nivel de disco como de memoria RAM.</li>
+<li>rendimiento: al balancear la carga entre particiones las escrituras serán más rápidas que al centrarlas en un único servidor.</li>
+<li>disponibilidad: si un servidor está ocupado, otro servidor puede devolver los datos. La carga de los servidores se reduce.</li>
+</ul>
+<p>No particionaremos los datos cuando la cantidad sea pequeña, ya que el hecho de distribuir los datos conlleva unos costes que pueden no compensar con un volumen de datos insuficiente. Tampoco esperaremos a particionar cuando tengamos muchísimos datos, ya que el proceso de particionado puede provocar sobrecarga del sistema.</p>
+<p>La nube facilita de manera considerable este escalado, mediante proveedores como AWS o Azure los cuales ofrecen virtualmente una capacidad ilimitada bajo demanda, y despreocupándose de todas las tareas necesarias para la administración de la base de datos.</p>
+<p>Los desarrolladores ya no necesitamos construir plataformas complejas para nuestras aplicaciones, de modo que nos podemos centrar en escribir código de aplicación. Una granja de servidores con <em>commodity hardware</em> puede ofrecer el mismo procesamiento y capacidad de almacenamiento que un único servidor de alto rendimiento por mucho menos coste.</p>
+<h3 id="replicacion">Replicación<a class="headerlink" href="12nosql.html#replicacion" title="Permanent link">&para;</a></h3>
+<p>La replicación mantiene copias idénticas de los datos en múltiples servidores, lo que facilita que las aplicaciones siempre funcionen y los datos se mantengan seguros, incluso si alguno de los servidores sufre algún problema.</p>
+<p>La mayoría de las bases de datos actuales también soportan la replicación automática, lo que implica una alta disponibilidad y recuperación frente a desastres sin la necesidad de aplicaciones de terceros encargadas de ello. Desde el punto de vista del desarrollador, el entorno de almacenamiento es virtual y ajeno al código de aplicación.</p>
+<p>Antes de ver los tipos, hemos de ser conscientes de cuál va a ser la función de la máquina replicada. Si queremos tener una copia de los datos, la cual sólo vamos a utilizar para realizar operaciones de consulta (<strong>réplica de lectura</strong>) va a implicar una configuración diferente de si lo que queremos es replicar nodos donde queremos que se pueda escribir también (<strong>réplica de escritura</strong>).</p>
+<p>Dicho esto, las principales arquitecturas de replicación son:</p>
+<ul>
+<li>
+<p><strong>Maestro-esclavo</strong> / Primario-secundario</p>
+<p>Todas las escrituras se realizan en el nodo principal y después se replican a los nodos secundarios. El nodo primario es un SPOF (<em>single point of failure</em>).</p>
+</li>
+<li>
+<p><strong>Multi-maestro</strong> / Entre pares (<em>peer-to-peer</em>) </p>
+<p>Todos los nodos tienen el mismo nivel jerárquico, de manera que todos (o casi todo) admiten escrituras. Al poder haber escrituras simultáneas sobre el mismo datos en diferentes nodos, pueden darse inconsistencia en los datos.</p>
+</li>
+</ul>
+<figure style="align: center;">
+    <img src="../images/12replication.svg" width="600px" alt="Tipos de replicación">
+    <figcaption>Tipos de replicación - https://berb.github.io/diploma-thesis</figcaption>
+</figure>
+
+<p>Conviene aclarar que cada modelo conlleva que los datos tengan diferente tipo de consistencia:</p>
+<ul>
+<li><strong>Consistencia fuerte</strong>: Garantiza que todas las réplicas tienen los mismos datos antes de confirmar cualquier operación, esto es, que después de que una escritura se complete, todas las lecturas reflejan inmediatamente el valor actualizado. Por ejemplo, los sistemas bancarios y las bases de datos que soportan ACID.</li>
+<li><strong>Consistencia eventual</strong>: Permite cierto desfase temporal entre réplicas, aceptando que los datos se sincronizarán en algún momento, a costa de poder llegar a leer datos desactualizados. Usos típicos serían los <em>likes</em> o comentarios en redes sociales.</li>
+</ul>
+<p>La replicación de los datos se utiliza para alcanzar:</p>
+<ul>
+<li><strong>escalabilidad</strong>, incrementando el rendimiento al poder distribuir las consultas en diferentes nodos, y mejorar la redundancia al permitir que cada nodo tenga una copia de los datos.</li>
+<li><strong>disponibilidad</strong>, ofreciendo tolerancia a fallos de hardware o corrupción de la base de datos. Al replicar los datos vamos a poder tener una copia de la base de datos, dar soporte a un servidor de datos agregados, o tener nodos a modo de copias de seguridad que pueden tomar el control en caso de fallo.</li>
+<li><strong>aislamiento</strong> (la i en ACID - <em>isolation</em>), entendido como la propiedad que define cuándo y cómo al realizar cambios en un nodo se propagan al resto de nodos. Si replicamos los datos podemos crear copias sincronizadas para separar procesos de la base de datos de producción, pudiendo ejecutar informes, analítica de datos o copias de seguridad en nodos secundarios de modo que no tenga un impacto negativo en el nodo principal, así como ofrecer un sistema sencillo para separar el entorno de producción del de preproducción.</li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Replicación vs particionado</p>
+<p>No hay que confundir la replicación (copia de los datos en varias máquinas) con el particionado (cada máquina tiene un subconjunto de los datos). El entorno más seguro y con mejor rendimiento es aquel que tiene los datos particionados y replicados (cada máquina que tiene un subconjunto de los datos está replicada en 2 o más).</p>
+<p><figure style="align: center;">
+    <img src="../images/12sharding-replication.png" alt="Replicación y particionado" width="600px">
+    <figcaption>Replicación y particionado - codingexplained.com</figcaption>
+</figure></p>
+</div>
+<h3 id="teorema-de-cap">Teorema de CAP<a class="headerlink" href="12nosql.html#teorema-de-cap" title="Permanent link">&para;</a></h3>
+<p>Propuesto por <em>Eric Brewer</em> en el año 2000, plantea que podemos crear una base de datos distribuida que elija dos de las siguientes tres características:</p>
+<ul>
+<li><strong>C</strong>onsistencia: las escrituras son atómicas y todas las peticiones posteriores obtienen el nuevo valor, independientemente del lugar de la petición.</li>
+<li>Disponibilidad (<em><strong>A</strong>vailable</em>): la base de datos devolverá siempre un valor. En la práctica significa que no hay <em>downtime</em>.</li>
+<li>Tolerancia a <strong>P</strong>articiones: el sistema funcionará incluso si la comunicación con un servidor se interrumpe de manera temporal (para ello, ha de dividir los datos entre diferentes nodos). Es decir, implica que se pueden recibir lecturas desde unos nodos que no contienen información escrita en otros.</li>
+</ul>
+<p>En otras palabras, podemos crear un sistema de base de datos que sea consistente y tolerante a particiones (CP), un sistema que sea disponible y tolerante a particiones (AP), o un sistema que sea consistente y disponible (CA). Pero no es posible crear una base de datos distribuida que sea consistente, disponible y tolerante a particiones al mismo tiempo.</p>
+<figure style="align: center;">
+    <img src="../images/12teorema.png" alt="Teorema de CAP" width="400px">
+    <figcaption>Teorema de CAP</figcaption>
+</figure>
+
+<p>El teorema CAP es útil cuando consideramos el sistema de base de datos que necesitamos, ya que nos permite decidir cuál de las tres características vamos a descartar. La elección realmente se centra entre la disponibilidad y la consistencia, ya que la tolerancia a particiones es una decisión de arquitectura (sea o no distribuida).</p>
+<p>Aunque el teorema dicte que si en un sistema distribuido elegimos disponibilidad no podemos tener consistencia, todavía podemos obtener consistencia eventual. Es decir, cada nodo siempre estará disponible para servir peticiones, aunque estos nodos no puedan asegurar que la información que contienen sea consistente (pero si bastante precisa), en algún momento lo será.</p>
+<p>Algunas bases de datos tolerantes a particiones se pueden ajustar para ser más o menos consistentes o disponible a nivel de petición. Por ejemplo, <em>Riak</em> trabaja de esta manera, permitiendo a los clientes decidir en tiempo de petición qué nivel de consistencia necesitan.</p>
+<h4 id="clasificacion-segun-cap">Clasificación según CAP<a class="headerlink" href="12nosql.html#clasificacion-segun-cap" title="Permanent link">&para;</a></h4>
+<p>El siguiente gráfico muestra cómo dependiendo de estos atributos podemos clasificar los sistemas NoSQL:</p>
+<figure style="align: center;">
+    <img src="../images/12teoremaCAPam.png" alt="Clasificación según CAP" width="400px">
+    <figcaption>Clasificación según CAP</figcaption>
+</figure>
+
+<p>Así pues, las bases de datos NoSQL se clasifican en:</p>
+<ul>
+<li><strong>CP</strong>: Consistente y tolerante a particiones. Tanto <em>MongoDB</em> como <em>HBase</em> son CP, ya que dentro de una partición pueden no estar disponibles para responder una determinada consulta (por ejemplo, evitando lecturas en los nodos secundarios), aunque son tolerantes a fallos porque cualquier nodo secundario se puede convertir en principal y asumir el rol del nodo caído.</li>
+<li><strong>AP</strong>: Disponible y tolerante a particiones. <em>DynamoDB</em> permite replicar los datos entre sus nodos, aunque no garantiza la consistencia en ninguno de los sus servidores.</li>
+<li><strong>CA</strong>: Consistente y disponible. Aquí es donde situaríamos a los SGDB relacionales. Por ejemplo, <em>PostgreSQL</em> es CA (aunque ofrece un producto complementario para dar soporte al particionado, como <em>PgCluster</em>), ya que no distribuyen los datos y por tanto la partición no es una restricción.</li>
+</ul>
+<p>Lo bueno es que la gran mayoría de sistemas permiten configurarse para cambiar su tipo CAP, lo que permite que <em>MongoDB</em> pase de CP a AP, o <em>CouchDB</em> de AP a CP.</p>
+<h3 id="base">BASE<a class="headerlink" href="12nosql.html#base" title="Permanent link">&para;</a></h3>
+<p>De forma análoga al modelo transaccional <a href="09dcl-tcl.html#acid">ACID</a> para las bases de datos relacionales que dan soporte a la transaccionalidad ofreciendo en todo momento un sistema consistente, las bases de datos distribuidas siguen el modelo transaccional BASE, el cual se centra en la alta disponibilidad y significa:</p>
+<ul>
+<li>Básicamente disponible (<strong><em>B</em></strong><em>asically</em> <strong><em>A</em></strong><em>vailable</em>): la base de datos siempre responde a las solicitudes recibidas, ya sea con una respuesta exitosa o con un error, aún en el caso de que el sistema soporte la tolerancia a particiones (de manera que caiga algún nodo o no esté accesible por problemas de la red). Esto puedo implicar lecturas desde nodos que no han recibido la última escritura, por lo que el resultado puede no ser consistente.</li>
+<li>Estado blando (<strong><em>S</em></strong><em>oft State</em>): la base de datos puede encontrarse en un estado inconsistente cuando se produce una lectura, de modo que es posible realizar dos veces la misma lectura y obtener dos resultados distintos a pesar de que no haya habido ninguna escritura entre ambas operaciones, sino que la escritura se había realizado antes en el tiempo y no se había persistido hasta dicho momento.</li>
+<li>Consistencia eventual (<strong><em>E</em></strong><em>ventual consistency</em>): tras cada escritura, la consistencia de la base de datos sólo se alcanza una vez el cambio ha sido propagado a todos los nodos. Durante el tiempo que tarda en producirse la consistencia, observamos un estado blando de la base de datos.</li>
+</ul>
+<p>Una base de datos que sigue el modelo transaccional BASE prefiere la disponibilidad antes que la consistencia (es decir, desde el punto de vista del Teorema CAP es AP).</p>
+<h2 id="big-data">Big Data<a class="headerlink" href="12nosql.html#big-data" title="Permanent link">&para;</a></h2>
+<p>Aunque parece que todo el mundo debe trabajar con cuantos más datos mejor, no todo es <em>Big Data</em> en el mundo tecnológico.</p>
+<figure style="float: right;">
+    <img src="../images/12bigdata.jpeg" width="400" alt="Datos y más datos">
+    <figcaption>Datos y más datos</figcaption>
+</figure>
+
+<p>Está claro que los datos son el petróleo del siglo XX, tal como dijo <em>Clive Humby</em> en el 2006, y que se puede obtener mucho valor si almacenamos y sabemos extraer información precisa de "nuestros" datos. Sin embargo, ya en la década del 2020, los <a href="https://www.forbes.com/sites/nishatalagala/2022/03/02/data-as-the-new-oil-is-not-enough-four-principles-for-avoiding-data-fires">datos <em>per se</em> no son suficiente</a> si no que debemos conocerlos y cuidarlos.</p>
+<p>Pero el adjetivo <em>Big</em> implica cantidades ingentes, dicho de otro modo, cantidades de datos que una de nuestras máquinas no puede gestionar y necesita de la computación distribuida y plataformas como el <em>cloud</em> para su almacenamiento y gestión. Es probable que con soluciones de <em>Small Data</em> podamos cubrir gran parte de los problemas que requieren nuestra industria más cercana. Eso sí, muchas de las técnicas y destrezas asociadas a la ingeniería de datos no son únicas de grandes volúmenes de datos con arquitecturas distribuidas, sino que, podemos llevárnoslas a nuestros desarrollos a menor escala para automatizar y poner los datos por delante de nuestras empresas y aplicaciones.</p>
+<p>Pero antes de entrar en harina, retrocedamos en el tiempo.</p>
+<h3 id="hablemos-de-v">Hablemos de V<a class="headerlink" href="12nosql.html#hablemos-de-v" title="Permanent link">&para;</a></h3>
+<p><a href="https://es.wikipedia.org/wiki/V_(serie_de_televisi%C3%B3n_de_1983)">V</a> fue un fenómeno en los 80 como serie de ciencia ficción, pero relacionado con el <em>Big Data</em>, dependiendo de la literatura, tenemos las 3V del Big Data, las 5V, las 7V...</p>
+<p>En los inicios, para saber si hablábamos o no de <em>Big Data</em>, nos teníamos que preguntar si cumplían con las 3V:</p>
+<ul>
+<li><strong>Variedad</strong>: en relación con las fuentes, formas y tipos. Por ejemplo, pueden ser: estructurados, como tablas de una base de datos relacional o ficheros de texto o semiestructurados como los documentos JSON. Incluso almacenar datos no estructurados como correos electrónicos, imágenes o audios.</li>
+<li><strong>Volumen</strong>: Entendida como la cantidad de datos procesados y almacenados. A día de hoy probablemente superior al orden de TB de datos y que, para su procesamiento, superan la memoria RAM de nuestros sistemas.</li>
+<li><strong>Velocidad</strong>: el tratamiento que realizamos sobre los datos, en ocasiones cercano al tiempo real o con unos tiempos de recolección, procesamiento y almacenamiento finitos y claramente definidos.</li>
+</ul>
+<p>Luego se añadieron un par más, haciendo un total de 5V:</p>
+<ul>
+<li><strong>Valor</strong>: <em>"Lo que importa, son los datos importantes"</em>, los que aportan valor, transformando datos en información, y a su vez, en conocimiento que facilita la toma de decisiones.</li>
+<li><strong>Veracidad</strong>: Debemos asegurar que los datos que tenemos son reales y no contienen datos erróneos, es decir, que son fiables. Se dedica un esfuerzo importante en explorar y validar los datos para que la analítica realizada sea veraz.</li>
+</ul>
+<p>Y, por último, otras dos hasta llegar a las 7V:</p>
+<ul>
+<li><strong>Viabilidad</strong>: Es necesario saber la capacidad que tiene una empresa para realizar un uso eficaz de los datos, cuestionarse qué y cuántos datos se necesitan para predecir los resultados más interesantes para la empresa.</li>
+<li><strong>Visualización</strong>: Necesitamos poder representar los datos, ya sea de manera visual mediante gráficos o codificados en indicadores (KPI) para hacer que sean legibles y accesibles.</li>
+</ul>
+<figure style="align: center">
+    <img src="../images/127v.png" alt="Las 7 V del Big Data">
+    <figcaption>Las 7 V del Big Data</figcaption>
+</figure>
+
+<p>Claramente, para los departamentos de <em>marketing</em>, <em>Big Data</em> se escribe con V.</p>
+<h3 id="inteligencia-de-negocio">Inteligencia de negocio<a class="headerlink" href="12nosql.html#inteligencia-de-negocio" title="Permanent link">&para;</a></h3>
+<p>Mientras que las aplicaciones <em>Big Data</em> recogen información desde múltiples fuentes de entrada, el concepto de inteligencia de negocio (<strong><em>business intelligence</em></strong>) se centra en el uso que hace la empresa de dichos datos, es decir, coge los datos y los transforma en conocimiento para la ayuda en la toma de decisiones en base a los datos analizados.</p>
+<p>Hasta ahora, las preguntas a las que hemos dado respuesta son del tipo ¿Cuantas zapatillas hemos vendido en el último mes? Las empresas necesitas adoptar decisiones estratégicas para definir una estrategia que mejore su competitividad. Así pues, necesita respuestas a preguntas del tipo ¿Cuántos zapatillas blancas del 46 se vendieron el último mes en los centros comerciales más cercanos a la ciudad; comparados con las ventas del mismo mes el año pasado? o ¿Qué tipo de cliente me ha estado comprando una zapatilla premium en los últimos 5 años?</p>
+<p>Para poder tener respuesta a estas preguntas, necesitamos realizar una <strong>analítica de datos</strong>, la cual implica procesar, limpiar, organizar y extraer información útil de grandes volúmenes de datos. Para ello, las herramientas de <em>Business Intelligence</em> (BI) son aplicaciones de soporte de decisiones que permiten en tiempo real, acceso interactivo, análisis y manipulación de información crítica y así ser capaces de generar conocimiento mediante el análisis de la información ya almacenada, es decir, realizando <strong>analítica descriptiva</strong> (¿Qué sucedió?) y <strong>diagnóstica</strong> (¿Por qué sucedió?).</p>
+<p>Con la ayuda del <em>Big Data</em> y la IA, podemos afrontar analíticas más avanzadas, como son la analítica <strong>predictiva</strong> (¿Qué pasará en el futuro?) y <strong>prescriptiva</strong> (¿Cómo podemos prevenir? ¿Qué debería suceder?) para establecer tendencias, averiguar por qué suceden las cosas y hacer una estimación de cómo se desarrollarán las cosas en el futuro.</p>
+<div class="admonition info">
+<p class="admonition-title">Un caso práctico</p>
+<p>Supongamos que nos centramos en una clínica médica que dispone de información médica sobre sus pacientes. Si realizamos un estudio de aplicar las diferentes analíticas, tendríamos:</p>
+<ul>
+<li>
+<p>Descriptiva (¿Qué sucedió?): La clínica analiza los historiales médicos y registros de citas del último año para identificar las enfermedades más comunes tratadas en sus instalaciones. Descubre que el 40% de las consultas fueron por problemas respiratorios, el 30% por afecciones musculoesqueléticas y el 30% restante por otras patologías.</p>
+</li>
+<li>
+<p>Diagnóstica (¿Por qué sucedió?): Al analizar en profundidad los datos de los pacientes con enfermedades respiratorias, la clínica detecta que la mayoría de los casos se concentran en los meses de invierno y en personas con antecedentes de alergias o tabaquismo. Esto sugiere una correlación con factores estacionales y hábitos de vida.</p>
+</li>
+<li>
+<p>Predictiva (¿Qué pasará en el futuro?): Utilizando modelos de <em>machine learning</em>, la clínica predice que, en función de las tendencias anteriores y las condiciones climáticas esperadas, habrá un aumento del 20% en consultas por gripe y enfermedades respiratorias en los próximos tres meses.</p>
+</li>
+<li>
+<p>Prescriptiva (¿Cómo podemos prevenirlo? ¿Qué debería suceder?): Con base en la predicción anterior, la clínica decide lanzar una campaña de vacunación contra la gripe y reforzar las consultas preventivas para pacientes de riesgo. Además, optimiza la agenda de los médicos y aumenta la compra de medicamentos específicos para estar preparados ante el incremento de la demanda.</p>
+</li>
+</ul>
+</div>
+<p>Algunos componentes clave que forman parte del <em>BI</em> son:</p>
+<ul>
+<li>Almacenes de datos (<em>Data warehouse</em>): almacenes centralizados que recogen datos de diferentes fuentes para realizar el análisis y dar soporte a los sistemas de ayuda a la toma de decisiones. Estos sistemas se clasifican como OLAP (<em>On-Line Analytical Processing</em>), en contraposición de los sistemas OLTP (<em>On-Line Transactional Processing</em>) que son los que hemos utilizado hasta ahora y que están orientados a los procesos diarios de la empresa. Se organizan por temas, variables en el tiempo y no volátiles, de manera que los datos no se modifican, sólo se añaden nuevos datos.</li>
+<li>Procesos ETL (ETL = <em>Extract + Transform + Load</em>): son los procesos encargados de extraer datos de diferentes fuentes, transformarlos para adaptarlos a las necesidades del negocio (limpiando los datos y convirtiéndolos en un formato adecuado) y cargarlos en el almacén de datos.</li>
+<li><em>Reporting</em>: herramientas que permiten crear informes detallados basados en los datos almacenados, como pueden ser <a href="https://www.microsoft.com/es-es/power-platform/products/power-bi">Power BI</a> o <a href="https://www.tableau.com/es-es">Tableau</a>.</li>
+<li>Cuadros de mandos: panel visual interactivo que permite monitorizar uno o más <strong><em>KPIs</em></strong> (indicadores clave de rendimiento) y otros aspectos importantes del negocio en tiempo real de un solo vistazo.</li>
+<li>Minería de datos: La minería de datos busca patrones ocultos en grandes volúmenes de datos que pueden tener valor para la toma de decisiones. Se utiliza para identificar patrones de comportamiento del cliente, fraudes, tendencias del mercado, etc.</li>
+</ul>
+<figure style="align: center">
+    <img src="../images/12dashboard.png" alt="Ejemplo de cuadro de mandos">
+    <figcaption>Ejemplo de cuadro de mandos</figcaption>
+</figure>
+
+<p>Con todo esto, la inteligencia de negocios aporta:</p>
+<ul>
+<li>Mejora de la toma de decisiones: Acceso a datos relevantes y análisis precisos para decisiones basadas en evidencia.</li>
+<li>Mayor eficiencia operativa: Optimización de procesos y recursos basados en el análisis de datos.</li>
+<li>Ventaja competitiva: Permite identificar oportunidades de negocio y mejorar el posicionamiento en el mercado.</li>
+<li>Personalización del servicio: Permite a las empresas personalizar ofertas basadas en el comportamiento del cliente.</li>
+</ul>
+<h3 id="ciencia-de-datos">Ciencia de datos<a class="headerlink" href="12nosql.html#ciencia-de-datos" title="Permanent link">&para;</a></h3>
+<p>La ciencia de datos incluye una serie de métodos para analizar tanto pequeños conjuntos de datos como cantidades enormes. Aunque no exista una proceso claramente definidos, podemos identificar los siguientes pasos:</p>
+<ol>
+<li>Establecer el <strong>objetivo</strong> de la investigación: todas las partes interesadas entienden el qué, el cómo y el porqué del proyecto y se crea un <em>project charter</em> o acta de constitución del proyecto.</li>
+<li><strong>Recuperación</strong> de datos: búsqueda de los datos, ya sean internos o externos a la empresa. El resultado son datos en bruto que seguramente habrá que limpiar (eliminar o corregir datos incompletos o erróneos, como por ejemplo, edades en negativo, fechas mal formateadas, etc...) y transformar antes de poder utilizarlos.</li>
+<li><strong>Preparación</strong> de los datos: necesitamos transformar los datos para que sean utilizables por los modelos, detectando y corrigiendo los diferentes tipos de errores, combinando datos de diversas fuentes. Un paso muy frecuente consiste en normalizar los datos, proceso consistente en transformar los datos categóricos en numéricos.</li>
+<li><strong>Exploración</strong> de datos, para obtener un conocimiento profundo de los datos, buscando patrones, correlaciones o desviaciones, normalmente, mediante técnicas visuales y descriptivas.</li>
+<li><strong>Modelado</strong>: creación de modelos, en ocasiones basados en IA, para obtener la información o realizar las predicciones indicadas en el acta de constitución del proyecto.</li>
+<li><strong>Presentación</strong> y <strong>automatización</strong>: Con la presentación de los resultados obtenidos (por ejemplo, mediante herramientas como <em>PowerBI</em> o <em>Tableau</em>) y su comprobación, es probable que se entre en un ciclo iterativo que provoque volver al paso 2 con datos nuevos y requiera automatizar todos el proceso.</li>
+</ol>
+<!--  Hacer un gráfico circular -->
+
+<h2 id="nosql">NoSQL<a class="headerlink" href="12nosql.html#nosql" title="Permanent link">&para;</a></h2>
+<p>Si definimos <strong>NoSQL</strong> formalmente, podemos decir que se trata de un conjunto de tecnologías que permiten el procesamiento rápido y eficiente de conjuntos de datos dando la <ins>mayor importancia al rendimiento, la fiabilidad y la agilidad</ins>.</p>
+<p>Si nos basamos en el acrónimo, el término da la sensación de que se refiere a cualquier almacén de datos que no sigue un modelo relacional, los datos no son relacionales y por tanto no utilizan SQL como lenguaje de consulta. Realmente implica que el <em>No</em> hace referencia a <em>not only</em>, es decir, que los sistemas NoSQL se centran en sistemas complementarios a los SGBD relacionales, que fijan sus prioridades en la escalabilidad y la disponibilidad en contra de la atomicidad y consistencia de los datos.</p>
+<p>Así pues, la revolución NoSQL se basa en comprender que hay más de una manera de resolver los problemas. Hay vida más allá de los sistemas de bases de datos relacionales, y NoSQL permite elegir la mejor herramienta para cada situación, que en algunas ocasiones será una base de datos relacional, pero en otras no. Por lo tanto, más que sustitutos de los sistemas relacionales, las soluciones NoSQL se plantean como alternativas y complementarias a los sistemas gestores de bases de datos relacionales.</p>
+<p>Los diferentes tipos de bases de datos NoSQL existentes se pueden agrupar en cuatro categorías:</p>
+<ul>
+<li>
+<p><strong>Clave-Valor</strong>: Los almacenes clave-valor son las bases de datos NoSQL más simples. Cada elemento de la base de datos se almacena con un nombre de atributo (o clave) junto a su valor, a modo de diccionario. Los almacenes más conocidos son <a href="https://redis.io">Redis</a>, <a href="https://riak.com">Riak</a> y <a href="https://aws.amazon.com/es/dynamodb/">AWS DynamoDB</a>. Algunos almacenes, como es el caso de <em>Redis</em>, permiten que cada valor tenga un tipo (por ejemplo, <em>integer</em>) lo cual añade funcionalidad extra.</p>
+</li>
+<li>
+<p><strong>Documentales</strong>: Cada clave se asocia a una estructura compleja que se conoce como documento. Este puede contener diferentes pares clave-valor, o pares de clave-array o incluso documentos anidados, como en un documento JSON. Los ejemplos más conocidos son <a href="https://www.mongodb.com">MongoDB</a> y <a href="https://couchdb.apache.org/">CouchDB</a>.</p>
+</li>
+<li>
+<p><strong>Grafos</strong>: Los almacenes de grafos se usan para almacenar información sobre redes, como pueden ser conexiones sociales. Los ejemplos más conocidos son <em>Neo4J</em>, <em>AWS Neptune</em> y <em>ArangoDB</em>.</p>
+</li>
+<li>
+<p><strong>Basados en columnas</strong>: Los almacenes basados en columnas como <em>BigTable</em>, <em>Cassandra</em> y <em>HBase</em> están optimizados para consultas sobre grandes conjuntos de datos, y almacenan los datos como columnas en vez de como filas.</p>
+</li>
+</ul>
+<figure style="align: center;">
+    <img src="../images/12nosql-databases.jpg" alt="Sistemas NoSQL">
+    <figcaption>Sistemas NoSQL</figcaption>
+</figure>
+
+<h3 id="caracteristicas">Características<a class="headerlink" href="12nosql.html#caracteristicas" title="Permanent link">&para;</a></h3>
+<p>Las bases de datos no relacionales (<em>NoSQL</em>) presentan características que las diferencian de las bases de datos relacionales. Sus principales características son:</p>
+<ol>
+<li>
+<p><em>Flexibilidad en el esquema</em>: No requieren un esquema fijo, lo que permite almacenar datos con estructuras variadas y evolucionar sin grandes modificaciones. Es decir, son capaces de trabajar 
+con datos estructurados, semi-estructurados y sin estructurar. Casi todas las implementaciones NoSQL ofrecen algún tipo de representación para datos sin esquema, lo que permite comenzar con una estructura y con el paso del tiempo, añadir nuevos campos, ya sean sencillos o anidados a datos ya existentes.</p>
+</li>
+<li>
+<p><em>Escalabilidad horizontal</em>: Están diseñadas para distribuir datos en múltiples servidores mediante técnicas como el <em>sharding</em> o particionado, lo que permite aumentar la capacidad del sistema simplemente añadiendo más nodos. A diferencia de las bases de datos relacionales, que suelen escalar verticalmente (aumentando la capacidad de un solo servidor), las bases de datos NoSQL pueden crecer de forma distribuida sin afectar el rendimiento, de un modo transparente para el desarrollador.</p>
+</li>
+<li>
+<p><em>Modelos de datos</em> diversos: Pueden organizarse en diferentes tipos de almacenamiento, que resuelven varios problemas que no se plantearon al definir el modelo relacional, como los modelos clave-valor (<em>Redis</em>), documental (<em>MongoDB</em>), columnar (<em>Cassandra</em>) o basada en grafos (<em>Neo4j</em>).</p>
+</li>
+<li>
+<p><em>Alta disponibilidad</em> y tolerancia a fallos: Utilizan replicación y distribución de datos en múltiples nodos para garantizar que el sistema continúe funcionando ante fallos de hardware o red. Algunos sistemas NoSQL implementan modelos de replicación maestro-esclavo o replicación distribuida para asegurar la continuidad del servicio.</p>
+</li>
+<li>
+<p>Optimización para <em>lectura/escritura masiva</em>: Estas bases de datos están diseñadas para gestionar grandes volúmenes de datos y transacciones de alta velocidad. Son ideales para aplicaciones con una carga intensa de escritura, como redes sociales, registros de sensores IoT o análisis de grandes volúmenes de datos en tiempo real.</p>
+</li>
+<li>
+<p><em>Consistencia eventual</em>: En lugar de seguir el estricto modelo ACID de las bases de datos relacionales, muchas bases de datos NoSQL priorizan la disponibilidad y la tolerancia a particiones, según el teorema CAP. Esto significa que, en algunos casos, los datos pueden no estar sincronizados en todos los nodos de manera inmediata, pero eventualmente alcanzan la consistencia. Este enfoque es útil para aplicaciones distribuidas donde la latencia es más crítica que la consistencia inmediata.</p>
+</li>
+<li>
+<p><em>Almacenamiento distribuido</em>: Pueden operar en entornos de computación en la nube y escalar dinámicamente según la demanda. Gracias a su arquitectura distribuida, son altamente eficientes para manejar datos en infraestructuras descentralizadas y en plataformas de servicios en la nube como AWS, Google Cloud o Azure.</p>
+</li>
+</ol>
+<p>Estas características hacen que las bases de datos NoSQL sean ideales para aplicaciones modernas como redes sociales, IoT, análisis de datos y sistemas en tiempo real.</p>
+<h2 id="referencias">Referencias<a class="headerlink" href="12nosql.html#referencias" title="Permanent link">&para;</a></h2>
+<!--
+Tecnologías de Almacenamiento de Datos No Relacionales (2017)
+https://ocw.unican.es/course/view.php?id=262
+-->
+
+<ul>
+<li><a href="https://ocw.unican.es/course/view.php?id=262">Tecnologías de Almacenamiento de Datos No Relacionales</a>, <em>Marta Zorrilla Pantaléon</em> y <em>Diego García Saiz</em>, Universidad de Canarias</li>
+<li><a href="https://ualmtorres.github.io/BDGEJupyterBook/notebooks/intro.html">Bases de datos a gran escala</a>, por <em>Manuel Torres</em>, Universidad de Almería.</li>
+<li><a href="https://www.digitalocean.com/community/tutorials/understanding-database-sharding">Understanding database sharding</a></li>
+</ul>
+<h2 id="actividades">Actividades<a class="headerlink" href="12nosql.html#actividades" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Bases de datos empleadas</p>
+<p>Recuerda que estas actividades se basan en las siguientes bases de datos</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">empresa</label><label for="__tabbed_1_2">retail</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>DDL y DML: <a href="resources/06bd-empresa.sql"><code>bd-empresa.sql</code></a></li>
+</ul>
+<p><figure style="align: center;">
+    <img src="../images/06bd-empresa.png" width="882" title="Modelo físico de la BD empresa">
+    <figcaption>Modelo físico de la BD empresa</figcaption>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>DDL y DML: <a href="resources/06bd-retail.sql"><code>bd-retail.sql</code></a></li>
+<li>Claves ajenas: <a href="resources/06bd-retail-fk.sql"><code>bd-retail-fk.sql</code></a> </li>
+</ul>
+<p><figure style="align: center;">
+    <img src="../images/06bd-retail.png" width="1088" title="Modelo físico de la BD retail">
+    <figcaption>Modelo físico de la BD retail</figcaption>
+</figure></p>
+</div>
+</div>
+</div>
+</div>
+<p><a name="AC1201"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1201</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr>, <abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr> // 3p) A partir de la información relativa a las <a href="12nosql.html#bases-de-datos-distribuidas">Bases de datos distribuidas</a>, realiza una infografía sobre aquellos conceptos que las diferencian de las bases de datos centralizadas, destacando las políticas de fragmentación de la información.</li>
+</ul>
+<p><a name="AC1202"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1202</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr> // 3p) A partir del proyecto intermodular que has ido desarrollando a lo largo del curso, seguro que se puede realizar una analítica de datos que aporten valor al negocio. Para cada una de las analíticas vistas (descriptivas, diagnóstica, predictiva y prescriptiva), piensa en algún tipo de solución tecnológica, indicando además de la analítica que cubre, qué datos serían necesarios y cuál sería el objetivo de su aplicación.</li>
+</ul>
+<p><a name="AP1203"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1203</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr> // 3p) Investiga en qué consiste el concepto de lago de datos (<em>data lake</em>) y qué relación tiene con un <em>data warehouse</em> y un <em>data lakehouse</em>. Finalmente, explica en qué consiste la arquitectura <em>Medallion</em>, y cómo se relaciona con los tres elementos anteriores.</li>
+</ul>
+<p><a name="AP1204"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1204</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr> // 3p) Una herramienta <em>open source</em> que se emplea actualmente para realizar cuadros de mandos en entornos web es <a href="https://grafana.com/">Grafana</a>. Para hacerte una idea de qué se puede hacer con ella, es recomendable que visualices el vídeo  <a href="https://www.youtube.com/watch?v=riFxqD_6XYI">Aprende Grafana en 10 Minutos!</a> de <em>CodelyTV</em> y que navegues por <a href="https://play.grafana.org/">play.grafana.org</a> donde puedes encontrar multitud de cuadros de mandos con diversas fuentes de datos.</p>
+<p>En la página de <a href="00entorno.html#grafana">Entorno</a> tienes instrucciones para su instalación en <em>Docker</em> y poder emplearlo con los datos que hemos estado trabajado durante todo el curso. Una vez instalado, y utilizando la base de datos <code>retail</code>, se pide:</p>
+<ol>
+<li>Añadir una fuente de datos (<em>data source</em>) de tipo <em>MySQL</em>. Ten en cuenta que en nombre del <em>host</em> debes configurar el nombre del contenedor: <code>mdb:3306</code></li>
+<li>Accede a la opción <em>Explore</em> y realiza un par de consultas con agregaciones y comprueba que aparecen las tablas y columnas de la base de datos seleccionada.</li>
+<li>Crea un nuevo cuadro de mandos (<em>dashboard</em>) con un par de gráficos, algún KPI y una tabla con datos importantes.</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC1205"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1205</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr>, <abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr>, <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr> // 3p) Para cada uno de los cuatro modelos de datos NoSQL, explica en un párrafo en qué consiste, elige uno de los productos más representativos de dicho tipo, y además del enlace, averigua el comando <em>Docker</em> para lanzar el servicio y cómo insertar un dato.</p>
+<p>A continuación, para cada caso de uso, identifica qué modelo NoSQL sería más adecuado y justifica tu respuesta:</p>
+<ul>
+<li>Una red social con usuarios que siguen a otros usuarios. <!-- Grafo --></li>
+<li>Un sistema de carrito de compras en línea. <!-- Clave-valor --></li>
+<li>Un catálogo de productos. <!-- Documental --></li>
+<li>Un sistema de análisis de datos de sensores IoT.  <!-- columnar / series temporales --></li>
+<li>Un servicio de caché para una aplicación web. <!-- clave-valor --></li>
+</ul>
+</li>
+</ul>
+<p><a name="AR1206"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1206</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr>, <abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr>, <abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr>, <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr>, <abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr>, <abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr>, <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
+</ul>
+<!--
+Poner un ejemplo de tabla con muchas filas y columnas, y que piensen en la fragmentación y la replicación...
+
+AP En qué consiste NewSQL?
+
+AP Poner algún vídeo tutorial de Grafana y hacer un cuadro de mandos sencillo
+-->
+
+<!--
+Contenidos básicos:
+
+Almacenamiento de la información:
+− Ficheros (planos, indexados, acceso directo, entre otros).
+− Bases de datos. Conceptos, usos y tipos según el modelo de datos, la
+ubicación de la información.
+− Sistemas gestores de base de datos: Funciones, componentes y tipos.
+− Bases de datos centralizadas y bases de datos distribuidas. Técnicas de
+fragmentación.
+− Legislación sobre protección de datos.
+− Big Data: introducción, análisis de datos, inteligencia de negocios.
+
+Bases de datos relacionales:
+− Modelo de datos.
+− Terminología del modelo relacional.
+− Tipos de datos.
+− Claves primarias.
+− Restricciones de validación.
+− Índices. Características.
+− El valor NULL.
+− Claves ajenas.
+− Vistas.
+− Usuarios. Privilegios.
+− Lenguaje de descripción de datos (DDL).
+− Lenguaje de control de datos (DCL).
+
+Realización de consultas:
+− Proyección, selección y ordenación de registros.
+− Operadores. Operadores de comparación. Operadores lógicos.
+− Consultas de resumen.
+− Agrupamiento de registros.
+− Composiciones internas.
+− Composiciones externas.
+− Subconsultas
+− Combinación de múltiples selecciones.
+− Optimización de consultas.
+
+Tratamiento de datos:
+− Inserción, borrado y modificación de registros.
+− Integridad referencial.
+− Subconsultas y composiciones en órdenes de edición.
+− Transacciones.
+− Políticas de bloqueo. Concurrencia.
+
+Programación de bases de datos:
+− Introducción. Lenguaje de programación.
+− Variables del sistema y variables de usuario.
+− Funciones.
+− Estructuras de control de flujo.
+− Procedimientos almacenados. Funciones de usuario.
+− Eventos y disparadores.
+− Excepciones.
+− Cursores.
+
+Interpretación de Diagramas Entidad/Relación:
+− El modelo E/R. Entidades y relaciones. Cardinalidades. Debilidad.
+− El modelo E/R ampliado. Generalización y especialización. Agregación.
+− Paso del diagrama E/R al modelo relacional.
+− Restricciones semánticas del modelo relacional.
+− Normalización de modelos relacionales.
+
+Uso de bases de datos no relacionales:
+− Características de las bases de datos no relacionales.
+− Tipos de bases de datos no relacionales.
+− Elementos de las bases de datos no relacionales.
+− Sistemas gestores de bases de datos no relacionales.
+− Herramientas de los sistemas gestores de bases de datos no relacionales
+para la gestión de la información almacenada.
+
+
+Las actividades profesionales asociadas a esta función se aplican en:
+− La gestión de la información almacenada en bases de datos.
+− El desarrollo de aplicaciones que acceden a bases de datos.
+
+La formación del módulo contribuye a alcanzar los objetivos generales c), e), f), p) y t) del ciclo formativo y las competencias b), c), e), p) y t) del título.
+
+-->
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        <a href='https://ko-fi.com/T6T8GWT9N' title='Invítame a un café en ko-fi.com' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Invítame a un café en ko-fi.com' /></a>
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="Me encantan estos apuntes" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="Los apuntes son mejorables" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Gracias por tu tiempo. Si quieres me puedes <a href='https://ko-fi.com/T6T8GWT9N'>invitar a un café en ko-fi</a>.
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              ¡Gracias por tu colaboración! Ayúdame a mejorar los apuntes enviándome un mail a <a href="mailto:molmedilla@iesjuanbosco.es">molmedilla@iesjuanbosco.es</a> con tus comentarios.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              
+        </div>
+      </article>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <p class="footer__text">Â© 2024-2026 Mayte Olmedilla - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" class="footer__link">Licencia CC BY-NC-SA</a></p>
+        <p class="footer__text"><a href="https://github.com/mayteoe/BBDD" class="footer__link">GitHub</a> | <a href="https://www.iesjuanbosco.es" class="footer__link">IES Juan Bosco</a> | <a href="mailto:molmedilla@iesjuanbosco.es" class="footer__link">molmedilla@iesjuanbosco.es</a></p>
+        <p class="footer__text footer__text--small">Basado en el trabajo de Aitor Medrano</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
